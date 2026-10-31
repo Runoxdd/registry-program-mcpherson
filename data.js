@@ -32,7 +32,7 @@ window.EVENT = {
       postnominals: "RAS, FAvH, MNIAS, MWARIMA",
       title: "Vice-Chancellor, McPherson University",
       photo: "assets/img/igbasan-2.jpg",
-      bio: null
+      bio: "Some scholars distinguish themselves through the knowledge they create; others through the institutions they build. Professor Francis Adegbaye Igbasan belongs to the distinguished company of those who do both.\n\nAn accomplished scholar of international repute, registered Animal Scientist, prolific researcher, and seasoned university administrator, Professor Igbasan brings over three decades of experience in teaching, research, academic development, and university administration. He is the second substantive Vice-Chancellor of McPherson University, Seriki Sotayo, Ogun State, where his tenure has been marked by remarkable institutional growth and purposeful transformation.\n\nUnder his watch, McPherson University has moved from an enrolment of 435 students to over 3,500 – a remarkable expansion of more than eightfold. Beyond the numbers, his administration has enriched the academic curriculum, introduced modern infrastructure, and commissioned over 14 strategic development projects. These are not merely statistics; they represent expanded opportunities for young people, improved facilities for teaching and learning, and a stronger institutional foundation for the generations to come. His vision is reflected not only in what has been built, but also in the growing number of lives the University is positioned to transform.\n\nHis credentials are as impressive as his accomplishments. Professor Igbasan holds a Ph.D. in Animal Science from the University of Manitoba, Winnipeg, Canada; an M.Sc. in Animal Science from the University of Ibadan; and a B.Tech. in Animal Production and Health from the Federal University of Technology, Akure. He attained the rank of Professor at FUTA in 2013 and subsequently served as Deputy Vice-Chancellor of Olusegun Agagu University of Science and Technology.\n\nA researcher whose work has crossed academic and international boundaries, he has published over 60 scientific articles, supervised numerous postgraduate scholars, and attracted prestigious international research opportunities, including the highly competitive Alexander von Humboldt Research Fellowship in Germany. His contributions extend beyond publications to mentoring the next generation of researchers and advancing scientific knowledge.\n\nHis passion for quality and excellence is also reflected in his professional training as an academic program and institutional accreditor through the National Universities Commission, the National Open University of Nigeria, and the African Quality Assurance Network. This grounding reinforces his commitment to academic standards, institutional accountability, and continuous improvement.\n\nYet, beyond the titles, publications, projects, and professional distinctions lies a man whose character has earned recognition in its own right. The Guardian Newspaper named him among its 50 Nigerians with Integrity in Leadership. He is also a recipient of the All-African Students Union African Leadership Award and productivity honours from his alma mater, FUTA.\n\nFrom the laboratories of scientific research to the corridors of university administration, from mentoring postgraduate scholars to expanding the frontiers of institutional development, Professor Francis Adegbaye Igbasan has demonstrated that true distinction is measured not simply by positions attained, but by the positive difference made.\n\nHe is a scholar whose knowledge informs progress, an administrator whose vision produces measurable results, and a man whose integrity gives meaning to achievement. His enduring contribution lies not merely in the institutions he has served, but in the opportunities he has created, the lives he has influenced, and the future he continues to help shape.\n\nMcU celebrates Professor Francis Adegbaye Igbasan – an accomplished academic, a distinguished university administrator, and a worthy ambassador of excellence and integrity."
     },
     {
       id: "adekola",
@@ -83,7 +83,22 @@ window.EVENT = {
   /* 2025 & 2026 Registry Lecture Local Organising Committee.
      Add one entry per member. `linkedin` is optional; with it, the name becomes a link.
      e.g. { name: "Mr. John Doe", role: "Chairman", linkedin: "https://www.linkedin.com/in/..." } */
-  committee: [],
+  committee: [
+    { name: "Mr. Tokunbo Olakunle", role: "Chairman", linkedin: null },
+    { name: "Mr. Ayodeji Adesina", role: "Member", linkedin: null },
+    { name: "Mrs. Omowunmi Fagbohun", role: "Member", linkedin: null },
+    { name: "Mr. Benjamin Edison", role: "Member", linkedin: null },
+    { name: "Mr. Isaac Merayebu", role: "Member", linkedin: null },
+    { name: "Mrs. Nike Adesida", role: "Member", linkedin: null },
+    { name: "Mrs. Funmilayo Adesina", role: "Co-opted Member", linkedin: null },
+    { name: "Dr. Mrs. Oluwatoyin Yalumo", role: "Co-opted Member", linkedin: null },
+    { name: "Ms. Oluwaseun Akindele", role: "Co-opted Member", linkedin: null },
+    { name: "Mr. Abiola Oduyemi", role: "Co-opted Member", linkedin: null },
+    { name: "Mr. Oluwaseyi Ojo", role: "Secretary", linkedin: null }
+  ],
+  committeeRetired: [
+    { name: "Late Ms. Nengi Kalio", note: "Membership retired following her transition." }
+  ],
 
   // Maiden (1st) Registry Lecture, 2025
   maiden: {

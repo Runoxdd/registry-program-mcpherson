@@ -444,3 +444,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .lb-prev span { transform: translate(-30%, -50%) rotate(-135deg); }
 .lb-next span { transform: translate(-70%, -50%) rotate(45deg); }
 @media (max-width: 760px) { .lb-prev, .lb-next { top: auto; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); transform: none; } .lb-figure { padding-bottom: 5rem; } }
+.committee-sub { margin-top: 2rem; font-family: var(--f-display); font-weight: 700; font-size: 1rem; color: var(--muted); }
+.committee-list.is-retired { margin-top: .75rem; }
+.committee-list.is-retired li { flex-direction: column; gap: .25rem; }
+.committee-list.is-retired .cm-name { font-weight: 500; color: var(--text); }
+.cm-note { font-style: italic; font-size: .9375rem; color: var(--muted); }
+.committee-list li { align-items: baseline; }
+@media (max-width: 560px) { .committee-list li { flex-direction: column; gap: .125rem; } }

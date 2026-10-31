@@ -113,6 +113,14 @@
         return '<li><span class="cm-name">' + name + "</span>" + (m.role ? '<span class="cm-role">' + esc(m.role) + "</span>" : "") + "</li>";
       }).join("") + "</ul>"
     : '<p class="committee-empty">The names of committee members will be published here shortly.</p>';
+  var retired = E.committeeRetired || [];
+  if (retired.length) {
+    $("#committee-list").innerHTML +=
+      '<h3 class="committee-sub">Retired membership</h3><ul class="committee-list is-retired">' +
+      retired.map(function (m) {
+        return '<li><span class="cm-name">' + esc(m.name) + "</span>" + (m.note ? '<span class="cm-note">' + esc(m.note) + "</span>" : "") + "</li>";
+      }).join("") + "</ul>";
+  }
   $all("[data-committee]").forEach(function (b) {
     b.addEventListener("click", function () {
       if (typeof setDd === "function") setDd(false);

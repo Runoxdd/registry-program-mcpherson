@@ -18,7 +18,7 @@ Everything editable is in `data.js`:
 - **Registration form:** `registerUrl`. If it changes, regenerate `assets/img/register-qr.svg` too.
 - **Last year's lecture:** `pastLectureUrl`.
 - **Speaker links:** `link` makes the name clickable; `links` adds buttons in the biography pop-up. A speaker with a `bio` gets a short excerpt and a "Read full biography" pop-up.
-- **Local Organising Committee:** add members to `committee` as `{ name, role, linkedin }`. They appear in the pop-up under Registry → Local Organising Committee.
+- **Local Organising Committee:** add members to `committee` as `{ name, role, linkedin }`; `committeeRetired` lists retired members with a note. They appear in the pop-up under Registry → Local Organising Committee.
 - **2025 gallery:** `maiden.photos`. Each `src` needs two files: `name.jpg` (full size) and `name-sm.jpg` (thumbnail). The first photo is shown large.
 - **Cache:** after changing CSS/JS, bump the `?v=` number on their tags in index.html. When replacing a photo, give it a new file name.
 
@@ -26,6 +26,6 @@ Everything editable is in `data.js`:
 `npx vercel --prod` from this folder, or drag the folder into vercel.com/new.
 
 ## To do before launch
-- Bios for Prof. Igbasan and Dr. Babalola
-- Local Organising Committee names and LinkedIn links
+- Bio for Dr. Babalola
+- LinkedIn links for committee members (set `linkedin` in data.js)
 - Set og:image to an absolute URL once the domain is known
