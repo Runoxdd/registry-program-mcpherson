@@ -16,7 +16,7 @@ window.EVENT = {
 
   venue: "500-Seater Ultra-modern Lecture Theatre",
   venueDetail: "McPherson University, Seriki Sotayo, Ogun State",
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=McPherson+University+Seriki+Sotayo+Ogun+State",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=McPherson+University%2C+Km+75+Lagos-Ibadan+Expressway%2C+Ogun+State",
 
   registerUrl: "https://forms.gle/UkVdwtavHwdT3KCn9",
   onlineUrl: null, // TODO: Zoom / YouTube link for this year's lecture

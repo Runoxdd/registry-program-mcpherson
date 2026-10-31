@@ -107,7 +107,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .menu-btn[aria-expanded="true"] .bars::before { transform: translateY(6px) rotate(45deg); }
 .menu-btn[aria-expanded="true"] .bars::after { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 900px) {
+@media (max-width: 1020px) {
   .menu-btn { display: block; }
   .nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
@@ -266,8 +266,47 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .cal-links { display: grid; gap: .625rem; margin-top: .5rem; padding-top: 1rem; border-top: 1px solid var(--line); width: 100%; }
 @media (max-width: 860px) { .attend-grid { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- directions ---------- */
+.directions { background: var(--white); }
+.address-row {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem;
+  padding-block: 1.5rem; border-block: 1px solid var(--line); margin-bottom: 2rem;
+}
+.address-row > div { min-width: 0; }
+.address-label { font-family: var(--f-display); font-weight: 650; font-size: .875rem; color: var(--gold-deep); }
+.address { margin-top: .25rem; font-family: var(--f-display); font-weight: 700; font-stretch: 88%; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.2; color: var(--ink); }
+
+.route-tabs { display: none; }
+.routes.is-tabbed .route-tabs { display: flex; gap: .25rem; border-bottom: 2px solid var(--line); margin-bottom: 2rem; overflow-x: auto; scrollbar-width: none; }
+.route-tab {
+  flex: none; background: none; border: 0; cursor: pointer;
+  font-family: var(--f-display); font-weight: 650; font-size: 1.0625rem; color: var(--muted);
+  padding: .75rem 1.125rem; margin-bottom: -2px; border-bottom: 3px solid transparent;
+}
+.route-tab:hover { color: var(--ink); }
+.route-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--gold); }
+.route-tab:focus-visible { outline-offset: -3px; }
+
+.route-panel + .route-panel { margin-top: 3rem; }
+.routes.is-tabbed .route-panel + .route-panel { margin-top: 0; }
+.route-heading { font-family: var(--f-display); font-weight: 800; font-stretch: 75%; font-size: 1.75rem; color: var(--ink); margin-bottom: 1.5rem; }
+.routes.is-tabbed .route-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.route-modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.route-mode { background: var(--paper); border-radius: 4px; padding: clamp(1.25rem, 3vw, 2rem); min-width: 0; }
+.route-mode h4 { margin: 0 0 1.25rem; font-family: var(--f-display); font-weight: 750; font-stretch: 85%; font-size: 1.375rem; color: var(--ink); }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 1.125rem; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .875rem; font-size: 1rem; line-height: 1.5; position: relative; }
+.steps li::before {
+  content: counter(step); width: 2rem; height: 2rem; border-radius: 50%;
+  display: grid; place-items: center; background: var(--ink); color: var(--white);
+  font-family: var(--f-display); font-weight: 700; font-size: .875rem; font-variant-numeric: tabular-nums;
+}
+.steps li:not(:last-child)::after { content: ""; position: absolute; left: calc(1rem - 1px); top: 2.25rem; bottom: -1rem; width: 2px; background: var(--line); }
+.steps li > * { min-width: 0; }
+@media (max-width: 760px) { .route-modes { grid-template-columns: minmax(0, 1fr); } .route-tab { flex: 1 1 0; padding-inline: .25rem; font-size: .9375rem; } }
+
 /* ---------- contact ---------- */
-.contact { background: var(--white); }
+.contact { background: var(--paper); }
 .contact-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: end; }
 .contact-lede { margin-top: 1rem; color: var(--muted); max-width: 46ch; }
 .email-block { border-top: 3px solid var(--ink); padding-top: 1.25rem; min-width: 0; }

@@ -94,6 +94,34 @@
   }
   if (tick()) { var iv = setInterval(function () { if (!tick()) clearInterval(iv); }, 1000); }
 
+  /* ---------- directions tabs ---------- */
+  var routes = $("#routes");
+  if (routes) {
+    var tabs = $all('[role="tab"]', routes);
+    routes.classList.add("is-tabbed");
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(t); });
+      t.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+        if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === "Home") n = tabs[0];
+        if (e.key === "End") n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+    select(tabs[0]);
+  }
+
   /* ---------- mobile nav ---------- */
   var btn = $("#menu-btn"), nav = $("#site-nav");
   btn.addEventListener("click", function () {
