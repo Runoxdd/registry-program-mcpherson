@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//McPherson University Registry//Registry Lecture 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mcu-registry-lecture-2026@mcu.edu.ng
+DTSTAMP:20261030T000000Z
+DTSTART:20261119T090000Z
+SUMMARY:2nd Annual Registry Lecture: The Smart Registry
+DESCRIPTION:The Smart Registry: Leveraging AI for Efficiency\, Compliance & Service Delivery. Register: https://forms.gle/UkVdwtavHwdT3KCn9
+LOCATION:500-Seater Ultra-modern Lecture Theatre\, McPherson University\, Seriki Sotayo\, Ogun State
+URL:https://forms.gle/UkVdwtavHwdT3KCn9
+END:VEVENT
+END:VCALENDAR
