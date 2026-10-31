@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..650;1,8..60,400..500&display=swap">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
@@ -37,6 +37,7 @@
         <div class="dd-menu" id="registry-menu">
           <a href="https://mcu.edu.ng/main/registry/">About the Registry<span>Its role, units and services</span></a>
           <a href="https://mcu.edu.ng/main/faculty-members/mrs-emi-alawode/">Meet the Registrar<span>Mrs. Emi’ Alawode</span></a>
+          <button class="dd-item" type="button" data-committee>Local Organising Committee<span>2025 &amp; 2026 Registry Lecture</span></button>
         </div>
       </div>
       <a href="#speakers">Speakers</a>
@@ -66,7 +67,7 @@
         <p class="hero-lede">The lecture is the centrepiece of McPherson University’s first Registry Week, five days of activities for registry professionals, staff and guests from 16 to 20 November 2026.</p>
         <div class="hero-ctas">
           <a class="btn btn-gold" data-register href="#">Register to attend</a>
-          <a class="btn btn-line" data-past href="#">Watch last year’s lecture</a>
+          <a class="btn btn-line" href="#maiden">Last year’s lecture</a>
         </div>
       </div>
 
@@ -141,20 +142,29 @@
     </div>
   </section>
 
-  <!-- MAIDEN LECTURE -->
+  <!-- MAIDEN LECTURE (2025) -->
   <section class="section maiden" id="maiden">
-    <div class="wrap maiden-row">
-      <div class="maiden-copy">
-        <h2>The maiden Registry Lecture</h2>
-        <p>Last year McPherson University held its 1st Annual Registry Lecture. The full recording is on YouTube.</p>
+    <div class="wrap">
+      <div class="maiden-head">
+        <div class="maiden-copy">
+          <p class="maiden-kicker">1st Annual Registry Lecture, 2025</p>
+          <h2>The maiden Registry Lecture</h2>
+          <p class="maiden-theme" data-maiden-theme></p>
+          <p class="maiden-meta" data-maiden-meta></p>
+        </div>
+        <div class="maiden-actions">
+          <a class="maiden-link" data-past href="#">
+            <span class="play" aria-hidden="true"></span>
+            <span class="maiden-link-text">
+              <span class="maiden-link-title">Watch the full lecture</span>
+              <span class="maiden-link-sub">Recording on YouTube</span>
+            </span>
+          </a>
+        </div>
       </div>
-      <a class="maiden-link" data-past href="#">
-        <span class="play" aria-hidden="true"></span>
-        <span class="maiden-link-text">
-          <span class="maiden-link-title">Watch the 1st Annual Registry Lecture</span>
-          <span class="maiden-link-sub">Opens on YouTube</span>
-        </span>
-      </a>
+
+      <div class="gallery" id="gallery"></div>
+      <p class="album-row"><a class="album-link" data-album href="#"><span class="al-title">View the full photo album</span><span class="al-sub">Google Photos</span></a></p>
     </div>
   </section>
 
@@ -311,11 +321,31 @@
         <h2 id="bio-name"></h2>
         <p class="speaker-pn" id="bio-pn"></p>
         <p class="speaker-title" id="bio-title"></p>
+        <p class="bio-tagline" id="bio-tagline" hidden></p>
         <div class="bio-links" id="bio-links"></div>
       </div>
     </div>
     <div class="bio-text" id="bio-text"></div>
   </div>
+</dialog>
+
+<dialog class="bio-dialog committee-dialog" id="committee-dialog" aria-labelledby="committee-title">
+  <div class="bio-dialog-inner">
+    <button class="bio-close" type="button" data-close aria-label="Close"><span aria-hidden="true"></span></button>
+    <p class="speaker-role">2025 &amp; 2026 Registry Lecture</p>
+    <h2 id="committee-title">Local Organising Committee</h2>
+    <div id="committee-list"></div>
+  </div>
+</dialog>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+  <figure class="lb-figure">
+    <img id="lb-img" src="" alt="">
+    <figcaption><span id="lb-caption"></span><span class="lb-count" id="lb-count"></span></figcaption>
+  </figure>
+  <button class="lb-btn lb-close" type="button" data-close aria-label="Close photo viewer"><span aria-hidden="true"></span></button>
+  <button class="lb-btn lb-prev" type="button" id="lb-prev" aria-label="Previous photo"><span aria-hidden="true"></span></button>
+  <button class="lb-btn lb-next" type="button" id="lb-next" aria-label="Next photo"><span aria-hidden="true"></span></button>
 </dialog>
 
 <footer class="site-footer">
@@ -334,7 +364,8 @@
       <a href="https://mcu.edu.ng/main/registry/">About the Registry</a>
       <a href="https://mcu.edu.ng/main/faculty-members/mrs-emi-alawode/">Meet the Registrar</a>
       <a data-register href="#">Register</a>
-      <a data-past href="#">Last year’s lecture</a>
+      <a data-past href="#">2025 lecture on YouTube</a>
+      <a data-album href="#">2025 photo album</a>
       <a href="#top">Back to top</a>
     </div>
   </div>
@@ -343,7 +374,7 @@
   </div>
 </footer>
 
-<script src="data.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="data.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

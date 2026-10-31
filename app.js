@@ -72,6 +72,7 @@
     $("#bio-name").innerHTML = nameHtml(sp);
     $("#bio-pn").textContent = sp.postnominals || ""; $("#bio-pn").hidden = !sp.postnominals;
     $("#bio-title").textContent = sp.title;
+    $("#bio-tagline").textContent = sp.bioTitle || ""; $("#bio-tagline").hidden = !sp.bioTitle;
     $("#bio-links").innerHTML = (sp.links || []).map(function (l) {
       return '<a class="text-link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + EXT + "</a>";
     }).join("");
@@ -90,6 +91,73 @@
     dlg.addEventListener("click", function (e) { if (e.target === dlg) closeBio(); });
     $all(".bio-open").forEach(function (b) {
       b.addEventListener("click", function () { openBio(b.getAttribute("data-bio"), b); });
+    });
+  }
+
+  /* ---------- shared dialog helpers ---------- */
+  function showDialog(d) { if (d.showModal) { d.showModal(); } else { d.setAttribute("open", ""); } }
+  function hideDialog(d) { if (d.close) { d.close(); } else { d.removeAttribute("open"); } }
+  $all("dialog").forEach(function (d) {
+    $all("[data-close]", d).forEach(function (b) { b.addEventListener("click", function () { hideDialog(d); }); });
+    d.addEventListener("click", function (e) { if (e.target === d) hideDialog(d); });
+  });
+
+  /* ---------- local organising committee ---------- */
+  var cDlg = $("#committee-dialog");
+  var members = E.committee || [];
+  $("#committee-list").innerHTML = members.length
+    ? '<ul class="committee-list">' + members.map(function (m) {
+        var name = m.linkedin
+          ? '<a class="name-link" href="' + esc(m.linkedin) + '" target="_blank" rel="noopener" aria-label="' + esc(m.name) + ' on LinkedIn (opens in a new tab)">' + esc(m.name) + EXT + "</a>"
+          : esc(m.name);
+        return '<li><span class="cm-name">' + name + "</span>" + (m.role ? '<span class="cm-role">' + esc(m.role) + "</span>" : "") + "</li>";
+      }).join("") + "</ul>"
+    : '<p class="committee-empty">The names of committee members will be published here shortly.</p>';
+  $all("[data-committee]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (typeof setDd === "function") setDd(false);
+      var mb = $("#menu-btn"); mb.setAttribute("aria-expanded", "false"); $("#site-nav").classList.remove("is-open");
+      showDialog(cDlg); $("[data-close]", cDlg).focus();
+    });
+  });
+
+  /* ---------- maiden lecture + gallery ---------- */
+  var M = E.maiden;
+  if (M) {
+    $all("[data-album]").forEach(function (a) { ext(a, M.albumUrl); });
+    $("[data-maiden-theme]").textContent = "“" + M.theme + "”";
+    $("[data-maiden-meta]").textContent = M.date + ", " + M.venue;
+    $("#gallery").innerHTML = M.photos.map(function (ph, i) {
+      return '<button class="g-item' + (i === 0 ? " is-lead" : "") + '" type="button" data-index="' + i + '" aria-label="View photo: ' + esc(ph.caption) + '">' +
+        '<img src="' + esc(ph.src) + '-sm.jpg" alt="' + esc(ph.caption) + '" loading="lazy" width="900" height="600"></button>';
+    }).join("");
+
+    var lb = $("#lightbox"), lbImg = $("#lb-img"), cur = 0, lbOpener = null;
+    function showPhoto(i) {
+      cur = (i + M.photos.length) % M.photos.length;
+      var ph = M.photos[cur];
+      lbImg.src = ph.src + ".jpg"; lbImg.alt = ph.caption;
+      $("#lb-caption").textContent = ph.caption;
+      $("#lb-count").textContent = (cur + 1) + " of " + M.photos.length;
+    }
+    $all(".g-item").forEach(function (b) {
+      b.addEventListener("click", function () {
+        lbOpener = b; showPhoto(+b.getAttribute("data-index")); showDialog(lb); $(".lb-close").focus();
+      });
+    });
+    $("#lb-prev").addEventListener("click", function () { showPhoto(cur - 1); });
+    $("#lb-next").addEventListener("click", function () { showPhoto(cur + 1); });
+    lb.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") showPhoto(cur - 1);
+      if (e.key === "ArrowRight") showPhoto(cur + 1);
+    });
+    lb.addEventListener("close", function () { if (lbOpener) lbOpener.focus(); });
+    var tx = null;
+    lb.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (tx === null) return;
+      var dx = e.changedTouches[0].clientX - tx; tx = null;
+      if (Math.abs(dx) > 50) showPhoto(cur + (dx < 0 ? 1 : -1));
     });
   }
 
