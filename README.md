@@ -26,6 +26,6 @@ Everything editable is in `data.js`:
 `npx vercel --prod` from this folder, or drag the folder into vercel.com/new.
 
 ## To do before launch
-- Bios for Prof. Igbasan, Dr. Adekola and Dr. Babalola
+- Bios for Prof. Igbasan and Dr. Babalola
 - Local Organising Committee names and LinkedIn links
 - Set og:image to an absolute URL once the domain is known

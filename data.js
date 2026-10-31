@@ -41,7 +41,7 @@ window.EVENT = {
       postnominals: "FCIA, FCIDA, FSM",
       title: "Pioneer Registrar, Fountain University; former Registrar, FUNAAB; former Secretary-General, ARNU",
       photo: "assets/img/adekola-2.jpg",
-      bio: null
+      bio: "Dr. ‘Bola Adekola is a seasoned university administrator, researcher and institutional leader with over three decades of experience in university administration, spanning Nigeria’s public, private and federal university systems. His distinguished career includes rising through the ranks at Olabisi Onabanjo University, serving as Pioneer Registrar of Fountain University between 2007 and 2012, and as the 4th substantive Registrar of the Federal University of Agriculture, Abeokuta (FUNAAB), where he served from 2017 to 2023. He also served as Secretary-General of the Association of Registrars of Nigerian Universities, contributing to professional leadership beyond his institution.\n\nA Researcher in Personnel Management and Psychology and holder of a PhD in Personnel Psychology, Dr. Adekola has worked across several critical areas of university administration, including Faculty administration, Postgraduate School, Academic Planning, Senate Affairs and Council Affairs, amongst others. This breadth of exposure across different institutional settings has given him a practical understanding of the people, policies, processes, and resources that drive university administration.\n\nAn astute manager of men, materials and money and an award-winning professional, he is particularly recognised for combining administrative experience with people-centred leadership, professional discipline and institutional responsibility.\n\nHis professional journey began in 1990 as a Social Mobilisation Officer with MAMSER before he moved into university administration. From Administrative Officer to Pioneer Registrar and yet another Registrarship position, his progression reflects experience earned across the full spectrum of university administration.\n\nYet, perhaps the most compelling part of his story is where it began. Having lost both parents at an early age, he worked menial jobs, including farm work and teaching, to support his education. From Lukogbe in Ogun Waterside to the highest levels of university administration, his journey is a powerful testament to the transformative potential of education, resilience, and purposeful service.\n\nWith experience across three university ownership structures (private, state and federal), national professional leadership and multiple areas of university administration, Dr. Adekola brings to the Registry Lecture not merely theory, but practical experiences and lessons drawn from more than three decades in the field.\n\nHis enduring philosophy is simple: tough times do not last; with education, hard work, integrity, discipline and the right attitude, people can rise beyond their circumstances and institutions can rise to meet their purpose.\n\nBeyond these, Dr. Adekola enjoys being the husband of Oluwakemi Adekola, a Professor of Language Education at Fountain University, Osogbo, and they are blessed with lovely children and grandchildren."
     },
     {
       id: "babalola",
@@ -49,7 +49,7 @@ window.EVENT = {
       name: "Dr. Grace Olubunmi Babalola Esq.",
       postnominals: "FCIA, FCIPM, FIPMLD",
       title: "Registrar, Adekunle Ajasin University",
-      photo: "assets/img/babalola-2.jpg",
+      photo: "assets/img/babalola-3.jpg",
       bio: null
     },
     {
