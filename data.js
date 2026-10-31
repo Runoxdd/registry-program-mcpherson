@@ -31,7 +31,7 @@ window.EVENT = {
       name: "Prof. Francis Igbasan",
       postnominals: "RAS, FAvH, MNIAS, MWARIMA",
       title: "Vice-Chancellor, McPherson University",
-      photo: "assets/img/igbasan.jpg",
+      photo: "assets/img/igbasan-2.jpg",
       bio: null
     },
     {
@@ -40,7 +40,7 @@ window.EVENT = {
       name: "Dr. Bola Adekola",
       postnominals: "FCIA, FCIDA, FSM",
       title: "Pioneer Registrar, Fountain University; former Registrar, FUNAAB; former Secretary-General, ARNU",
-      photo: "assets/img/adekola.jpg",
+      photo: "assets/img/adekola-2.jpg",
       bio: null
     },
     {
@@ -49,7 +49,7 @@ window.EVENT = {
       name: "Dr. Grace Olubunmi Babalola Esq.",
       postnominals: "FCIA, FCIPM, FIPMLD",
       title: "Registrar, Adekunle Ajasin University",
-      photo: "assets/img/babalola.jpg",
+      photo: "assets/img/babalola-2.jpg",
       bio: null
     },
     {
