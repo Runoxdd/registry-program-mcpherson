@@ -68,7 +68,14 @@ window.EVENT = {
       postnominals: "FISOC, FICAN, MAHEP",
       title: "Registrar, McPherson University",
       photo: "assets/img/alawode.jpg",
-      bio: null
+      // the name links here
+      link: { label: "LinkedIn", url: "https://www.linkedin.com/in/ejalawodetech/" },
+      // extra links shown in the biography pop-up
+      links: [
+        { label: "LinkedIn", url: "https://www.linkedin.com/in/ejalawodetech/" },
+        { label: "Profile on mcu.edu.ng", url: "https://mcu.edu.ng/main/faculty-members/mrs-emi-alawode/" }
+      ],
+      bio: "Emi’ Alawode, the current Registrar of McPherson University, is a dedicated higher education administrator, communicator, and mentor with more than three decades of professional experience. She has served in various key leadership roles across academic administration, human resources, and public relations.\n\nAt the Federal University of Agriculture, Abeokuta (FUNAAB), she pioneered the use of e-meeting folders for the Appointments and Promotions Committee, improving efficiency and reducing paper use. She also redesigned the University-wide Bulletin and introduced College Bulletins to strengthen internal communication.\n\nWhile on sabbatical as Visiting Deputy Registrar at McPherson University, she launched the University’s first news bulletin, MCU Echo, setting the pace for structured campus information sharing.\n\nA World Pulse Digital Changemaker and a Powershift Inclusive Excellence (PIE) group member, she actively contributes to policies affecting over 80,000 women worldwide. She is also a proud member of communities like Lean In, Bloom, Women Techmakers, and Toastmasters, continuously learning and helping others grow. She has directly and indirectly trained and guided 7,500+ women and girls in leadership, communication, and digital skills programs as a mentor and coach.\n\nMrs. Alawode is a multi-fellow awardee of organisations including the Netherlands Universities Foundation for International Cooperation, the Internet Society, and the Every Woman Treaty. She has spoken at major international events such as Women in Tech, Aspire Global Unity, and the Women Leaders in Higher Education summit, reaching audiences in 30+ countries with insights into technology, women's empowerment, and cross-cultural communication.\n\nCurrently researching how women in Southwestern Nigeria use WhatsApp for business, shedding light on how digital tools shape economic opportunities, Alawode is deeply committed to mentoring young people, particularly women, and co-convenes EmpowHer, a platform dedicated to equipping African female undergraduates with leadership and career skills. Mrs. Alawode has shaped narratives, amplified voices, and driven impact in media, academia, and digital communities for over 20 years, including serving as a Volunteer Director of Women Who Code in Barcelona, Spain.\n\nHaving travelled to nearly every continent, she brings a broad perspective on higher education administration, culture, communication, and global challenges."
     }
   ]
 };

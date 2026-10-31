@@ -17,6 +17,8 @@ Everything editable is in `data.js`:
 - **Online link:** set `onlineUrl`. The "Join the online session" link appears automatically.
 - **Registration form:** `registerUrl`. If it changes, regenerate `assets/img/register-qr.svg` too.
 - **Last year's lecture:** `pastLectureUrl`.
+- **Speaker links:** `link` makes the name clickable; `links` adds buttons in the biography pop-up. A speaker with a `bio` gets a short excerpt and a "Read full biography" pop-up.
+- **Cache:** after changing CSS/JS, bump the `?v=` number on their tags in index.html. When replacing a photo, give it a new file name.
 
 ## Deploy (Vercel)
 `npx vercel --prod` from this folder, or drag the folder into vercel.com/new.

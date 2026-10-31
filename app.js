@@ -35,9 +35,16 @@
   }
 
   /* ---------- speakers ---------- */
+  var EXT = '<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5h-2v7h7v-2M7 2.5h2.5V5M9.5 2.5 5.5 6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>';
+  function paras(text) { return text.split(/\n\n+/); }
+  function nameHtml(sp) {
+    if (!sp.link) return esc(sp.name);
+    return '<a class="name-link" href="' + esc(sp.link.url) + '" target="_blank" rel="noopener" aria-label="' + esc(sp.name) + ' on ' + esc(sp.link.label) + ' (opens in a new tab)">' + esc(sp.name) + EXT + "</a>";
+  }
   function bioHtml(sp) {
     if (!sp.bio) return '<p class="bio bio-pending">Biography to be published shortly.</p>';
-    return sp.bio.split(/\n\n+/).map(function (p) { return '<p class="bio">' + esc(p) + "</p>"; }).join("");
+    return '<p class="bio bio-excerpt">' + esc(paras(sp.bio)[0]) + "</p>" +
+      '<button class="text-link bio-open" type="button" data-bio="' + esc(sp.id) + '">Read full biography</button>';
   }
   $("#speaker-list").innerHTML = E.speakers.map(function (sp) {
     return (
@@ -45,7 +52,7 @@
         '<figure class="speaker-photo"><img src="' + esc(sp.photo) + '" alt="Portrait of ' + esc(sp.name) + '" loading="lazy" width="640" height="800"></figure>' +
         '<div class="speaker-body">' +
           '<p class="speaker-role">' + esc(sp.role) + "</p>" +
-          "<h3>" + esc(sp.name) + "</h3>" +
+          "<h3>" + nameHtml(sp) + "</h3>" +
           (sp.postnominals ? '<p class="speaker-pn">' + esc(sp.postnominals) + "</p>" : "") +
           '<p class="speaker-title">' + esc(sp.title) + "</p>" +
           bioHtml(sp) +
@@ -53,6 +60,49 @@
       "</article>"
     );
   }).join("");
+
+  /* ---------- biography pop-up ---------- */
+  var dlg = $("#bio-dialog");
+  var lastOpener = null;
+  function openBio(id, opener) {
+    var sp = E.speakers.filter(function (s) { return s.id === id; })[0];
+    if (!sp) return;
+    $("#bio-photo").src = sp.photo; $("#bio-photo").alt = "Portrait of " + sp.name;
+    $("#bio-role").textContent = sp.role;
+    $("#bio-name").innerHTML = nameHtml(sp);
+    $("#bio-pn").textContent = sp.postnominals || ""; $("#bio-pn").hidden = !sp.postnominals;
+    $("#bio-title").textContent = sp.title;
+    $("#bio-links").innerHTML = (sp.links || []).map(function (l) {
+      return '<a class="text-link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + EXT + "</a>";
+    }).join("");
+    $("#bio-text").innerHTML = paras(sp.bio).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+    lastOpener = opener || null;
+    if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute("open", ""); }
+    dlg.scrollTop = 0; $(".bio-dialog-inner").scrollTop = 0;
+    $("#bio-close").focus();
+  }
+  function closeBio() {
+    if (dlg.close) { dlg.close(); } else { dlg.removeAttribute("open"); }
+  }
+  if (dlg) {
+    dlg.addEventListener("close", function () { if (lastOpener) lastOpener.focus(); });
+    $("#bio-close").addEventListener("click", closeBio);
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) closeBio(); });
+    $all(".bio-open").forEach(function (b) {
+      b.addEventListener("click", function () { openBio(b.getAttribute("data-bio"), b); });
+    });
+  }
+
+  /* ---------- registry dropdown ---------- */
+  var dd = $("#registry-dd");
+  if (dd) {
+    var ddBtn = $(".dd-btn", dd);
+    function setDd(open) { ddBtn.setAttribute("aria-expanded", String(open)); dd.classList.toggle("is-open", open); }
+    ddBtn.addEventListener("click", function (e) { e.stopPropagation(); setDd(ddBtn.getAttribute("aria-expanded") !== "true"); });
+    document.addEventListener("click", function (e) { if (!dd.contains(e.target)) setDd(false); });
+    dd.addEventListener("keydown", function (e) { if (e.key === "Escape") { setDd(false); ddBtn.focus(); } });
+    dd.addEventListener("focusout", function (e) { if (!dd.contains(e.relatedTarget)) setDd(false); });
+  }
 
   /* ---------- copy email ---------- */
   $all(".copy-btn").forEach(function (b) {
