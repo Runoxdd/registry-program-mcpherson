@@ -26,6 +26,5 @@ Everything editable is in `data.js`:
 `npx vercel --prod` from this folder, or drag the folder into vercel.com/new.
 
 ## To do before launch
-- Bio for Dr. Babalola
-- LinkedIn links for committee members (set `linkedin` in data.js)
+- LinkedIn links for Mr. Benjamin Edison, Mrs. Nike Adesida, Mrs. Funmilayo Adesina, Dr. Mrs. Oluwatoyin Yalumo, Ms. Oluwaseun Akindele
 - Set og:image to an absolute URL once the domain is known
