@@ -347,7 +347,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .footer-links a { font-family: var(--f-display); font-weight: 550; color: var(--white); text-decoration: none; }
 .footer-links a:hover { color: var(--gold); }
 .footer-base { margin-top: 2.5rem; font-size: .8125rem; }
-.footer-base p { padding-top: 1.25rem; border-top: 1px solid var(--line-dark); }
+.footer-base-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line-dark); }
+.credit { color: var(--sky); }
+.credit-name { font-family: var(--f-display); font-weight: 700; color: var(--white); letter-spacing: .01em; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- registry dropdown ---------- */
