@@ -99,7 +99,7 @@ window.EVENT = {
     { name: "Mr. Isaac Merayebu", role: "Member", linkedin: "https://www.linkedin.com/in/isaac-merayebu-841a38b6/" },
     { name: "Mrs. Nike Adesida", role: "Member", linkedin: "https://www.linkedin.com/in/nike-adesida-b579121b5/" },
     { name: "Mrs. Funmilayo Adesina", role: "Co-opted Member", linkedin: null },
-    { name: "Dr. Mrs. Oluwatoyin Yalumo", role: "Co-opted Member", linkedin: null },
+    { name: "Dr. Mrs. Oluwatoni Yalumo", role: "Co-opted Member", linkedin: null },
     { name: "Ms. Oluwaseun Akindele", role: "Co-opted Member", linkedin: null },
     { name: "Mr. Abiola Oduyemi", role: "Co-opted Member", linkedin: "https://www.linkedin.com/in/ab%C3%AD%C3%B3l%C3%A1od%C3%B9yem%C3%AD/" },
     { name: "Mr. Oluwaseyi Ojo", role: "Secretary", linkedin: "https://www.linkedin.com/in/oluwaseyi-ojo-74995271/" }
