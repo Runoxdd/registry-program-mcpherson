@@ -37,13 +37,25 @@
   /* ---------- speakers ---------- */
   var EXT = '<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5h-2v7h7v-2M7 2.5h2.5V5M9.5 2.5 5.5 6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>';
   function paras(text) { return text.split(/\n\n+/); }
+  var LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  function plain(text) { return text.replace(LINK_RE, "$1"); }
+  function richPara(text) {
+    var out = "", last = 0, m;
+    LINK_RE.lastIndex = 0;
+    while ((m = LINK_RE.exec(text))) {
+      out += esc(text.slice(last, m.index)) +
+        '<a class="bio-link" href="' + esc(m[2]) + '" target="_blank" rel="noopener">' + esc(m[1]) + EXT + "</a>";
+      last = LINK_RE.lastIndex;
+    }
+    return out + esc(text.slice(last));
+  }
   function nameHtml(sp) {
     if (!sp.link) return esc(sp.name);
     return '<a class="name-link" href="' + esc(sp.link.url) + '" target="_blank" rel="noopener" aria-label="' + esc(sp.name) + ' on ' + esc(sp.link.label) + ' (opens in a new tab)">' + esc(sp.name) + EXT + "</a>";
   }
   function bioHtml(sp) {
     if (!sp.bio) return '<p class="bio bio-pending">Biography to be published shortly.</p>';
-    return '<p class="bio bio-excerpt">' + esc(paras(sp.bio)[0]) + "</p>" +
+    return '<p class="bio bio-excerpt">' + esc(plain(paras(sp.bio)[0])) + "</p>" +
       '<button class="text-link bio-open" type="button" data-bio="' + esc(sp.id) + '">Read full biography</button>';
   }
   $("#speaker-list").innerHTML = E.speakers.map(function (sp) {
@@ -76,7 +88,7 @@
     $("#bio-links").innerHTML = (sp.links || []).map(function (l) {
       return '<a class="text-link" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + EXT + "</a>";
     }).join("");
-    $("#bio-text").innerHTML = paras(sp.bio).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+    $("#bio-text").innerHTML = paras(sp.bio).map(function (p) { return "<p>" + richPara(p) + "</p>"; }).join("");
     lastOpener = opener || null;
     if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute("open", ""); }
     dlg.scrollTop = 0; $(".bio-dialog-inner").scrollTop = 0;

@@ -107,7 +107,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .menu-btn[aria-expanded="true"] .bars::before { transform: translateY(6px) rotate(45deg); }
 .menu-btn[aria-expanded="true"] .bars::after { transform: translateY(-6px) rotate(-45deg); }
 
-@media (max-width: 1020px) {
+@media (max-width: 1080px) {
   .menu-btn { display: block; }
   .nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
@@ -368,7 +368,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .nav .dd-menu a { display: grid; gap: .125rem; padding: .75rem .875rem; border-radius: 3px; font-weight: 650; color: var(--ink); }
 .nav .dd-menu a span { font-family: var(--f-body); font-weight: 400; font-size: .875rem; color: var(--muted); }
 .nav .dd-menu a:hover { background: var(--paper); box-shadow: none; color: var(--steel); }
-@media (max-width: 1020px) {
+@media (max-width: 1080px) {
   .dd { flex-direction: column; border-bottom: 1px solid var(--mist); }
   .dd-btn { justify-content: space-between; padding-block: .75rem; font-size: 1.0625rem; width: 100%; }
   .dd-menu { position: static; min-width: 0; box-shadow: none; border: 0; border-left: 3px solid var(--gold); border-radius: 0; padding: 0 0 .5rem .75rem; margin-bottom: .5rem; }
@@ -414,7 +414,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 .nav .dd-menu .dd-item span { font-family: var(--f-body); font-weight: 400; font-size: .875rem; color: var(--muted); }
 .nav .dd-menu .dd-item:hover { background: var(--paper); color: var(--steel); }
-@media (max-width: 1020px) { .nav .dd-menu .dd-item { padding: .5rem; font-size: 1.0625rem; } }
+@media (max-width: 1080px) { .nav .dd-menu .dd-item { padding: .5rem; font-size: 1.0625rem; } }
 
 .bio-tagline { margin-top: .5rem; font-style: italic; color: var(--steel); font-size: 1rem; line-height: 1.4; }
 .committee-dialog { width: min(36rem, calc(100vw - 2rem)); }
@@ -451,3 +451,25 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .cm-note { font-style: italic; font-size: .9375rem; color: var(--muted); }
 .committee-list li { align-items: baseline; }
 @media (max-width: 560px) { .committee-list li { flex-direction: column; gap: .125rem; } }
+
+/* ---------- programme block ---------- */
+.prog { margin: 0 0 2.5rem; display: grid; gap: .75rem; }
+.prog-item { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: .5rem 1.5rem; padding: 1.25rem 1.5rem; background: var(--white); border: 1px solid var(--line); border-radius: 4px; }
+.prog-item.is-lecture { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.prog dt { display: flex; flex-direction: column; font-family: var(--f-display); }
+.prog-day { font-size: .875rem; font-weight: 550; color: var(--muted); }
+.prog-date { font-weight: 750; font-stretch: 85%; font-size: 1.25rem; line-height: 1.2; color: var(--ink); }
+.prog-time { margin-top: .25rem; font-size: .9375rem; font-weight: 600; color: var(--gold-deep); }
+.prog dd { margin: 0; font-size: 1rem; line-height: 1.5; color: var(--text); }
+.prog dd strong { display: block; font-family: var(--f-display); font-weight: 750; font-stretch: 85%; font-size: 1.25rem; color: var(--ink); margin-bottom: .25rem; }
+.prog-item.is-lecture .prog-day { color: var(--sky); }
+.prog-item.is-lecture .prog-date, .prog-item.is-lecture dd strong { color: var(--white); }
+.prog-item.is-lecture .prog-time { color: var(--gold); }
+.prog-item.is-lecture dd { color: var(--mist); }
+.attend-sub { font-family: var(--f-display); font-weight: 800; font-stretch: 75%; font-size: clamp(1.75rem, 3.5vw, 2.25rem); line-height: 1; color: var(--ink); margin-bottom: 1rem; }
+@media (max-width: 560px) { .prog-item { grid-template-columns: minmax(0, 1fr); padding: 1.125rem; } }
+
+/* ---------- links inside biographies ---------- */
+.bio-link { color: var(--steel); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bio-link:hover { color: var(--ink); text-decoration-color: var(--steel); }
+.bio-link .ext { margin-left: .2em; }

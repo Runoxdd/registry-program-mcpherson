@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..650;1,8..60,400..500&display=swap">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -41,8 +41,8 @@
         </div>
       </div>
       <a href="#speakers">Speakers</a>
-      <a href="#attend">Attend</a>
-      <a href="#directions">Directions</a>
+      <a href="#programme">Programme</a>
+      <a href="#directions">Directions to McU</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-actions">
@@ -66,8 +66,7 @@
         <p class="hero-sub">Leveraging AI for efficiency, compliance and service delivery</p>
         <p class="hero-lede">The lecture is the centrepiece of McPherson University’s first Registry Week, five days of activities for registry professionals, staff and guests from 16 to 20 November 2026.</p>
         <div class="hero-ctas">
-          <a class="btn btn-gold" data-register href="#">Register to attend</a>
-          <a class="btn btn-line" href="#maiden">Last year’s lecture</a>
+          <a class="btn btn-gold" data-register href="#">Free Registration</a>
         </div>
       </div>
 
@@ -111,7 +110,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Speakers and hosts</h2>
-        <p>The lecture brings together registrars who have led administration at universities across Nigeria.</p>
+        <p>The lecture brings together higher education professionals who have led administration at universities across Nigeria.</p>
       </div>
       <div class="speaker-list" id="speaker-list"></div>
     </div>
@@ -142,37 +141,22 @@
     </div>
   </section>
 
-  <!-- MAIDEN LECTURE (2025) -->
-  <section class="section maiden" id="maiden">
-    <div class="wrap">
-      <div class="maiden-head">
-        <div class="maiden-copy">
-          <p class="maiden-kicker">1st Annual Registry Lecture, 2025</p>
-          <h2>The maiden Registry Lecture</h2>
-          <p class="maiden-theme" data-maiden-theme></p>
-          <p class="maiden-meta" data-maiden-meta></p>
-        </div>
-        <div class="maiden-actions">
-          <a class="maiden-link" data-past href="#">
-            <span class="play" aria-hidden="true"></span>
-            <span class="maiden-link-text">
-              <span class="maiden-link-title">Watch the full lecture</span>
-              <span class="maiden-link-sub">Recording on YouTube</span>
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <div class="gallery" id="gallery"></div>
-      <p class="album-row"><a class="album-link" data-album href="#"><span class="al-title">View the full photo album</span><span class="al-sub">Google Photos</span></a></p>
-    </div>
-  </section>
-
-  <!-- ATTEND -->
-  <section class="section attend" id="attend">
+  <!-- PROGRAMME + ATTENDANCE -->
+  <section class="section attend" id="programme">
     <div class="wrap attend-grid">
       <div class="attend-modes">
-        <h2>How to attend</h2>
+        <h2>Programme</h2>
+        <dl class="prog">
+          <div class="prog-item is-lecture">
+            <dt><span class="prog-day">Thursday</span><span class="prog-date">19 November 2026</span><span class="prog-time">10:00 am</span></dt>
+            <dd><strong>2nd Annual Registry Lecture</strong>The Smart Registry: Leveraging AI for Efficiency, Compliance &amp; Service Delivery. 500-Seater Ultra-modern Lecture Theatre.</dd>
+          </div>
+          <div class="prog-item">
+            <dt><span class="prog-day">Monday to Friday</span><span class="prog-date">16 to 20 November 2026</span><span class="prog-time">Daily from 10:00 am</span></dt>
+            <dd><strong>1st Registry Week</strong>Five days of Registry activities at McPherson University, with the Registry Lecture as the highlight on Thursday.</dd>
+          </div>
+        </dl>
+        <h3 class="attend-sub">How to attend</h3>
         <article class="mode">
           <h3>In person</h3>
           <p>500-Seater Ultra-modern Lecture Theatre, McPherson University, Seriki Sotayo, Ogun State.</p>
@@ -309,6 +293,31 @@
       </div>
     </div>
   </section>
+  <!-- MAIDEN LECTURE (2025) -->
+  <section class="section maiden" id="maiden">
+    <div class="wrap">
+      <div class="maiden-head">
+        <div class="maiden-copy">
+          <p class="maiden-kicker">1st Annual Registry Lecture, 2025</p>
+          <h2>The maiden Registry Lecture</h2>
+          <p class="maiden-theme" data-maiden-theme></p>
+          <p class="maiden-meta" data-maiden-meta></p>
+        </div>
+        <div class="maiden-actions">
+          <a class="maiden-link" data-past href="#">
+            <span class="play" aria-hidden="true"></span>
+            <span class="maiden-link-text">
+              <span class="maiden-link-title">Watch the full lecture</span>
+              <span class="maiden-link-sub">Recording on YouTube</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+      <p class="album-row"><a class="album-link" data-album href="#"><span class="al-title">View the full photo album</span><span class="al-sub">Google Photos</span></a></p>
+    </div>
+  </section>
 </main>
 
 <dialog class="bio-dialog" id="bio-dialog" aria-labelledby="bio-name">
@@ -374,7 +383,7 @@
   </div>
 </footer>
 
-<script src="data.js?v=8"></script>
-<script src="app.js?v=5"></script>
+<script src="data.js?v=9"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>
