@@ -20,6 +20,7 @@ Everything editable is in `data.js`:
 - **Speaker links:** `link` makes the name clickable; `links` adds buttons in the biography pop-up. A speaker with a `bio` gets a short excerpt and a "Read full biography" pop-up.
 - **Local Organising Committee:** add members to `committee` as `{ name, role, linkedin }`; `committeeRetired` lists retired members with a note. They appear in the pop-up under Registry → Local Organising Committee.
 - **Former Registrars:** `formerRegistrars` as `{ name, role, years, linkedin }`, oldest first. Shown under Registry → Former Registrars.
+- **Promo video:** put the MP4 (and a poster image) in `assets/video/` and set `promoVideo.mp4` / `promoVideo.poster`. While `mp4` is null a "coming soon" frame shows.
 - **2025 gallery:** `maiden.photos`. Each `src` needs two files: `name.jpg` (full size) and `name-sm.jpg` (thumbnail). The first photo is shown large.
 - **Cache:** after changing CSS/JS, bump the `?v=` number on their tags in index.html. When replacing a photo, give it a new file name.
 

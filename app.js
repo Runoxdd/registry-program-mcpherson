@@ -147,6 +147,36 @@
     });
   });
 
+  /* ---------- promo video ---------- */
+  var pv = E.promoVideo, pp = $("#promo-player");
+  if (pp && pv) {
+    pp.style.setProperty("--ratio", pv.ratio || "16 / 9");
+    if (pv.mp4) {
+      pp.innerHTML =
+        '<video id="promo-video" preload="none" playsinline' + (pv.poster ? ' poster="' + esc(pv.poster) + '"' : "") + '>' +
+          '<source src="' + esc(pv.mp4) + '" type="video/mp4">' +
+          (pv.captions ? '<track kind="captions" src="' + esc(pv.captions) + '" srclang="en" label="English">' : "") +
+        "</video>" +
+        '<button class="promo-play" type="button" aria-label="Play the 30-second preview video"><span class="play" aria-hidden="true"></span><span class="promo-play-label">Play preview<span>0:30</span></span></button>';
+      var vid = $("#promo-video"), pb = $(".promo-play", pp);
+      pb.addEventListener("click", function () {
+        vid.controls = true; pp.classList.add("is-playing");
+        var r = vid.play(); if (r && r.catch) r.catch(function () {});
+        vid.focus();
+      });
+      vid.addEventListener("ended", function () { pp.classList.remove("is-playing"); vid.controls = false; vid.load(); });
+    } else {
+      pp.classList.add("is-pending");
+      pp.innerHTML =
+        '<div class="promo-pending">' +
+          '<span class="squares" aria-hidden="true"><i></i><i></i><i></i><i></i></span>' +
+          '<span class="play is-muted" aria-hidden="true"></span>' +
+          '<p class="promo-pending-title">Preview video coming soon</p>' +
+          '<p class="promo-pending-sub">2nd Annual Registry Lecture · 19 November 2026</p>' +
+        "</div>";
+    }
+  }
+
   /* ---------- former registrars ---------- */
   var rDlg = $("#registrars-dialog");
   var regs = E.formerRegistrars || [];

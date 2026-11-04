@@ -20,6 +20,13 @@ window.EVENT = {
 
   registerUrl: "https://forms.gle/UkVdwtavHwdT3KCn9",
   onlineUrl: null, // TODO: Zoom / YouTube link for this year's lecture
+  /* 30-second promo video for this year's lecture.
+     Leave mp4 as null to show the "coming soon" frame.
+     mp4: H.264/AAC MP4, ideally 1080p or 720p and under ~10 MB.
+     poster: a still image shown before the video plays.
+     captions: optional WebVTT (.vtt) file if the video has speech. */
+  promoVideo: { mp4: null, poster: null, captions: null, ratio: "16 / 9" },
+
   pastLectureUrl: "https://youtu.be/PUhL5goij88", // maiden (1st) Annual Registry Lecture
   email: "registrar@mcu.edu.ng",
   whatsapp: { display: "+234 704 563 1138", number: "2347045631138" }, // chat only, no calls

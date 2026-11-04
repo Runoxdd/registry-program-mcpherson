@@ -486,3 +486,27 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .chat-icon { width: .9em; height: .9em; flex: none; color: var(--steel); }
 .wa-note { margin-top: .25rem; font-size: .9375rem; color: var(--muted); }
 .contact-row { align-items: start; }
+
+/* ---------- promo video ---------- */
+.promo { background: var(--white); padding-block: clamp(3rem, 6vw, 4.5rem); }
+.promo-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.promo-copy { display: grid; gap: 1rem; justify-items: start; min-width: 0; }
+.promo-copy p { color: var(--muted); max-width: 36ch; }
+.promo-player { position: relative; aspect-ratio: var(--ratio, 16 / 9); max-width: 100%; background: var(--ink); border-radius: 4px; overflow: hidden; }
+.promo-player video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: var(--ink); }
+.promo-play {
+  position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: .75rem;
+  border: 0; cursor: pointer; background: linear-gradient(180deg, rgba(12, 28, 53, 0) 40%, rgba(12, 28, 53, .55));
+}
+.promo-play .play { width: 4.5rem; height: 4.5rem; transition: transform .15s; }
+.promo-play:hover .play { transform: scale(1.06); }
+.promo-play-label { display: flex; gap: .5rem; font-family: var(--f-display); font-weight: 700; font-size: 1rem; color: var(--white); }
+.promo-play-label span { font-weight: 500; color: var(--sky); font-variant-numeric: tabular-nums; }
+.promo-player.is-playing .promo-play { display: none; }
+.promo-pending { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: .75rem; padding: 1.5rem; text-align: center; background: var(--navy); }
+.promo-pending .squares { position: absolute; top: 1.25rem; left: 1.25rem; }
+.play.is-muted { opacity: .35; }
+.promo-pending-title { font-family: var(--f-display); font-weight: 750; font-stretch: 85%; font-size: clamp(1.25rem, 2.5vw, 1.625rem); color: var(--white); }
+.promo-pending-sub { font-family: var(--f-display); font-size: .9375rem; color: var(--sky); }
+@media (max-width: 760px) { .promo-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .promo-play .play { transition: none; } }
