@@ -157,7 +157,7 @@
           '<source src="' + esc(pv.mp4) + '" type="video/mp4">' +
           (pv.captions ? '<track kind="captions" src="' + esc(pv.captions) + '" srclang="en" label="English">' : "") +
         "</video>" +
-        '<button class="promo-play" type="button" aria-label="Play the 30-second preview video"><span class="play" aria-hidden="true"></span><span class="promo-play-label">Play preview<span>0:30</span></span></button>';
+        '<button class="promo-play" type="button" aria-label="Play the preview video"><span class="play" aria-hidden="true"></span><span class="promo-play-label">Play preview</span></button>';
       var vid = $("#promo-video"), pb = $(".promo-play", pp);
       pb.addEventListener("click", function () {
         vid.controls = true; pp.classList.add("is-playing");
