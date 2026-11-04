@@ -22,6 +22,7 @@ window.EVENT = {
   onlineUrl: null, // TODO: Zoom / YouTube link for this year's lecture
   pastLectureUrl: "https://youtu.be/PUhL5goij88", // maiden (1st) Annual Registry Lecture
   email: "registrar@mcu.edu.ng",
+  whatsapp: { display: "+234 704 563 1138", number: "2347045631138" }, // chat only, no calls
 
   // Same order as the flier
   speakers: [

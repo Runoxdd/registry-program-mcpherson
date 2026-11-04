@@ -480,3 +480,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .reg-meta { display: flex; flex-direction: column; align-items: flex-end; gap: .125rem; text-align: right; }
 .reg-years { font-family: var(--f-display); font-size: .875rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 @media (max-width: 560px) { .reg-meta { align-items: flex-start; text-align: left; flex-direction: row; gap: .75rem; } }
+.contact-channels { display: grid; gap: 2rem; min-width: 0; }
+.wa-value { margin-top: .375rem; display: flex; align-items: center; gap: .625rem; font-family: var(--f-display); font-weight: 700; font-stretch: 85%; font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--ink); font-variant-numeric: tabular-nums; }
+.wa-value span { user-select: all; }
+.chat-icon { width: .9em; height: .9em; flex: none; color: var(--steel); }
+.wa-note { margin-top: .25rem; font-size: .9375rem; color: var(--muted); }
+.contact-row { align-items: start; }

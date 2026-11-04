@@ -17,6 +17,12 @@
   $all("[data-map]").forEach(function (a) { ext(a, E.mapUrl); });
   $all("[data-email]").forEach(function (el) { el.textContent = E.email; });
   $all("[data-mailto]").forEach(function (a) { a.href = "mailto:" + E.email; });
+  if (E.whatsapp) {
+    $all("[data-wa-number]").forEach(function (el) { el.textContent = E.whatsapp.display; });
+    $all("[data-wa]").forEach(function (a) {
+      ext(a, "https://wa.me/" + E.whatsapp.number + "?text=" + encodeURIComponent("Hello, I have an enquiry about the McPherson University Registry Lecture 2026."));
+    });
+  }
 
   if (E.onlineUrl) {
     var ol = $("#online-link");
