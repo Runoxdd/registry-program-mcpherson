@@ -104,6 +104,12 @@ window.EVENT = {
     { name: "Mr. Abiola Oduyemi", role: "Co-opted Member", linkedin: "https://www.linkedin.com/in/ab%C3%AD%C3%B3l%C3%A1od%C3%B9yem%C3%AD/" },
     { name: "Mr. Oluwaseyi Ojo", role: "Secretary", linkedin: "https://www.linkedin.com/in/oluwaseyi-ojo-74995271/" }
   ],
+  // Former Registrars of McPherson University (Registry dropdown), oldest first
+  formerRegistrars: [
+    { name: "Mrs. Adebola Abegunde JP", role: "Pioneer Registrar", years: "2012 – 2017", linkedin: null },
+    { name: "Mrs. Tokunbo Alaba Kehinde", role: "Registrar", years: "2017 – 2022", linkedin: "https://www.linkedin.com/in/tokunbo-kehinde-b9044b28/" },
+    { name: "Mr. Olufemi Adebowale", role: "Acting Registrar", years: "2022 – 2025", linkedin: "https://www.linkedin.com/in/olufemi-ade-adebowale/" }
+  ],
   committeeRetired: [
     { name: "Late Ms. Nengi Kalio", note: "Membership retired following her transition." }
   ],

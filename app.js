@@ -141,6 +141,25 @@
     });
   });
 
+  /* ---------- former registrars ---------- */
+  var rDlg = $("#registrars-dialog");
+  var regs = E.formerRegistrars || [];
+  if (rDlg) {
+    $("#registrars-list").innerHTML = '<ul class="committee-list registrar-list">' + regs.map(function (m) {
+      var name = m.linkedin
+        ? '<a class="name-link" href="' + esc(m.linkedin) + '" target="_blank" rel="noopener" aria-label="' + esc(m.name) + ' on LinkedIn (opens in a new tab)">' + esc(m.name) + EXT + "</a>"
+        : esc(m.name);
+      return '<li><span class="cm-name">' + name + '</span><span class="reg-meta"><span class="cm-role">' + esc(m.role) + '</span><span class="reg-years">' + esc(m.years) + "</span></span></li>";
+    }).join("") + "</ul>";
+    $all("[data-registrars]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (typeof setDd === "function") setDd(false);
+        $("#menu-btn").setAttribute("aria-expanded", "false"); $("#site-nav").classList.remove("is-open");
+        showDialog(rDlg); $("[data-close]", rDlg).focus();
+      });
+    });
+  }
+
   /* ---------- maiden lecture + gallery ---------- */
   var M = E.maiden;
   if (M) {

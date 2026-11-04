@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..650;1,8..60,400..500&display=swap">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 
@@ -37,6 +37,7 @@
         <div class="dd-menu" id="registry-menu">
           <a href="https://mcu.edu.ng/main/registry/">About the Registry<span>Its role, units and services</span></a>
           <a href="https://mcu.edu.ng/main/faculty-members/mrs-emi-alawode/">Meet the Registrar<span>Mrs. Emi’ Alawode</span></a>
+          <button class="dd-item" type="button" data-registrars>Former Registrars<span>2012 to 2025</span></button>
           <button class="dd-item" type="button" data-committee>Local Organising Committee<span>2025 &amp; 2026 Registry Week</span></button>
         </div>
       </div>
@@ -347,6 +348,15 @@
   </div>
 </dialog>
 
+<dialog class="bio-dialog committee-dialog" id="registrars-dialog" aria-labelledby="registrars-title">
+  <div class="bio-dialog-inner">
+    <button class="bio-close" type="button" data-close aria-label="Close"><span aria-hidden="true"></span></button>
+    <p class="speaker-role">McPherson University</p>
+    <h2 id="registrars-title">Former Registrars</h2>
+    <div id="registrars-list"></div>
+  </div>
+</dialog>
+
 <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
   <figure class="lb-figure">
     <img id="lb-img" src="" alt="">
@@ -386,7 +396,7 @@
   </div>
 </footer>
 
-<script src="data.js?v=12"></script>
-<script src="app.js?v=6"></script>
+<script src="data.js?v=13"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

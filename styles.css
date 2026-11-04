@@ -477,3 +477,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .bio-link .ext { margin-left: .2em; }
 .nav a, .dd-btn { white-space: nowrap; }
 .brand-sub { max-width: none; white-space: nowrap; }
+.reg-meta { display: flex; flex-direction: column; align-items: flex-end; gap: .125rem; text-align: right; }
+.reg-years { font-family: var(--f-display); font-size: .875rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .reg-meta { align-items: flex-start; text-align: left; flex-direction: row; gap: .75rem; } }
