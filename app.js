@@ -171,7 +171,7 @@
         '<div class="promo-pending">' +
           '<span class="squares" aria-hidden="true"><i></i><i></i><i></i><i></i></span>' +
           '<span class="play is-muted" aria-hidden="true"></span>' +
-          '<p class="promo-pending-title">Preview video coming soon</p>' +
+          '<p class="promo-pending-title">Video coming soon</p>' +
           '<p class="promo-pending-sub">2nd Annual Registry Lecture · 19 November 2026</p>' +
         "</div>";
     }
