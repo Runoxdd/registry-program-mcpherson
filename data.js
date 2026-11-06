@@ -20,6 +20,17 @@ window.EVENT = {
 
   registerUrl: "https://forms.gle/UkVdwtavHwdT3KCn9",
   onlineUrl: null, // TODO: Zoom / YouTube link for this year's lecture
+  // Figures in the strip at the bottom of the hero. Edit freely.
+  stats: [
+    { value: "500", label: "Seats in the Lecture Theatre", note: "Plus participants online" },
+    { value: "5", label: "Days of Registry Week", note: "16 to 20 November 2026" },
+    { value: "30+", label: "Years of registry experience", note: "From our Keynote Speaker" },
+    { value: "Maiden", label: "Registry Week", note: "A first for McPherson University" }
+  ],
+
+  // Short line under "Introducing the McU Registry Social Impact Awards"
+  awardsNote: "Details to be announced.",
+
   /* 30-second promo video for this year's lecture.
      Leave mp4 as null to show the "coming soon" frame.
      mp4: H.264/AAC MP4, ideally 1080p or 720p and under ~10 MB.

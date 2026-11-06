@@ -147,6 +147,16 @@
     });
   });
 
+  /* ---------- hero stats + awards note ---------- */
+  var hs = $("#hero-stats");
+  if (hs && E.stats) {
+    hs.innerHTML = E.stats.map(function (st) {
+      return '<div class="stat"><dt class="stat-value">' + esc(st.value) + '</dt><dd><span class="stat-label">' + esc(st.label) + "</span>" +
+        (st.note ? '<span class="stat-note">' + esc(st.note) + "</span>" : "") + "</dd></div>";
+    }).join("");
+  }
+  if (E.awardsNote) $all("[data-awards-note]").forEach(function (el) { el.textContent = E.awardsNote; });
+
   /* ---------- promo video ---------- */
   var pv = E.promoVideo, pp = $("#promo-player");
   if (pp && pv) {

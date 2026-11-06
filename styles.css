@@ -175,17 +175,20 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .countdown.is-done .cd-cells { display: none; }
 .countdown.is-done .cd-label { margin-top: 0; color: var(--white); font-size: 1rem; }
 
-.hero-facts {
-  margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding-block: 1.5rem;
+.hero-stats {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding-block: 1.75rem 2rem;
   border-top: 1px solid var(--line-dark);
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem;
 }
-.hero-facts dt { font-family: var(--f-display); font-weight: 650; font-size: .875rem; color: var(--gold); }
-.hero-facts dd { margin: .25rem 0 0; color: var(--mist); font-size: 1rem; line-height: 1.45; }
+.stat { min-width: 0; display: grid; gap: .5rem; align-content: start; }
+.stat-value { font-family: var(--f-display); font-weight: 800; font-stretch: 72%; font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: .9; color: var(--gold); font-variant-numeric: lining-nums; }
+.stat dd { margin: 0; display: grid; gap: .125rem; }
+.stat-label { font-family: var(--f-display); font-weight: 650; font-size: 1rem; color: var(--white); }
+.stat-note { font-size: .9375rem; color: var(--sky); line-height: 1.4; }
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
-  .hero-facts { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
 }
 
 /* ---------- sections ---------- */
@@ -510,3 +513,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .promo-pending-sub { font-family: var(--f-display); font-size: .9375rem; color: var(--sky); }
 @media (max-width: 760px) { .promo-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .promo-play .play { transition: none; } }
+
+/* ---------- awards announcement ---------- */
+.awards { background: var(--gold); color: var(--ink); padding-block: 1.25rem; }
+.awards-row { display: flex; align-items: center; gap: 1rem 1.25rem; flex-wrap: wrap; }
+.awards .squares i { outline-color: var(--ink); }
+.awards-copy { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; min-width: 0; flex: 1; }
+.awards h2 { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.1; color: var(--ink); }
+.awards p { font-family: var(--f-display); font-weight: 550; font-size: .9375rem; color: var(--ink); opacity: .8; }
