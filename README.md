@@ -30,4 +30,3 @@ Everything editable is in `data.js`:
 
 ## To do before launch
 - LinkedIn link for Ms. Oluwaseun Akindele
-- Set og:image to an absolute URL once the domain is known

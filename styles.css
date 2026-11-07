@@ -521,3 +521,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .awards-copy { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; min-width: 0; flex: 1; }
 .awards h2 { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.1; color: var(--ink); }
 .awards p { font-family: var(--f-display); font-weight: 550; font-size: .9375rem; color: var(--ink); opacity: .8; }
+
+/* play control sits in the blurred panel left of the flier, so it doesn't cover the artwork */
+.promo-play { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .625rem; padding: 0 70.6% 0 0; background: none; }
+.promo-play .play { width: clamp(3rem, 6vw, 4.5rem); height: clamp(3rem, 6vw, 4.5rem); box-shadow: 0 6px 20px rgba(0, 0, 0, .35); }
+.promo-play-label { font-size: clamp(.8125rem, 1.4vw, 1rem); text-shadow: 0 1px 6px rgba(0, 0, 0, .5); }
+.promo-play:focus-visible { outline-offset: -4px; }

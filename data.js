@@ -36,7 +36,7 @@ window.EVENT = {
      mp4: H.264/AAC MP4, ideally 1080p or 720p and under ~10 MB.
      poster: a still image shown before the video plays.
      captions: optional WebVTT (.vtt) file if the video has speech. */
-  promoVideo: { mp4: null, poster: null, captions: null, ratio: "16 / 9" },
+  promoVideo: { mp4: "assets/video/registry-lecture-2026.mp4", poster: "assets/video/poster.jpg", captions: null, ratio: "16 / 9" },
 
   pastLectureUrl: "https://youtu.be/PUhL5goij88", // maiden (1st) Annual Registry Lecture
   email: "registrar@mcu.edu.ng",
