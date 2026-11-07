@@ -155,7 +155,7 @@
         (st.note ? '<span class="stat-note">' + esc(st.note) + "</span>" : "") + "</dd></div>";
     }).join("");
   }
-  if (E.awardsNote) $all("[data-awards-note]").forEach(function (el) { el.textContent = E.awardsNote; });
+  if (E.awardsNote) $all("[data-awards-note]").forEach(function (el) { el.textContent = E.awardsNote; el.hidden = false; });
 
   /* ---------- promo video ---------- */
   var pv = E.promoVideo, pp = $("#promo-player");

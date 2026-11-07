@@ -24,12 +24,12 @@ window.EVENT = {
   stats: [
     { value: "500", label: "Seats in the Lecture Theatre", note: "Plus participants online" },
     { value: "5", label: "Days of Registry Week", note: "16 to 20 November 2026" },
-    { value: "30+", label: "Years of registry experience", note: "From our Keynote Speaker" },
+    { value: "30+", label: "Years of Registry Experience", note: "From Leading Professionals" },
     { value: "Maiden", label: "Registry Week", note: "A first for McPherson University" }
   ],
 
   // Short line under "Introducing the McU Registry Social Impact Awards"
-  awardsNote: "Details to be announced.",
+  awardsNote: null,
 
   /* 30-second promo video for this year's lecture.
      Leave mp4 as null to show the "coming soon" frame.
