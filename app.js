@@ -67,7 +67,8 @@
   $("#speaker-list").innerHTML = E.speakers.map(function (sp) {
     return (
       '<article class="speaker" id="speaker-' + esc(sp.id) + '">' +
-        '<figure class="speaker-photo"><img src="' + esc(sp.photo) + '" alt="Portrait of ' + esc(sp.name) + '" loading="lazy" width="640" height="800"></figure>' +
+        '<figure class="speaker-photo' + (sp.bio ? ' has-bio" data-bio-photo="' + esc(sp.id) : "") + '"><img src="' + esc(sp.photo) + '" alt="Portrait of ' + esc(sp.name) + '" loading="lazy" width="640" height="800">' +
+          (sp.bio ? '<figcaption class="photo-hint" aria-hidden="true">Read biography</figcaption>' : "") + "</figure>" +
         '<div class="speaker-body">' +
           '<p class="speaker-role">' + esc(sp.role) + "</p>" +
           "<h3>" + nameHtml(sp) + "</h3>" +
@@ -109,6 +110,13 @@
     dlg.addEventListener("click", function (e) { if (e.target === dlg) closeBio(); });
     $all(".bio-open").forEach(function (b) {
       b.addEventListener("click", function () { openBio(b.getAttribute("data-bio"), b); });
+    });
+    // the photo also opens the biography (mouse/touch); keyboard users use the button below it
+    $all("[data-bio-photo]").forEach(function (f) {
+      f.addEventListener("click", function () {
+        var id = f.getAttribute("data-bio-photo");
+        openBio(id, $('.bio-open[data-bio="' + id + '"]'));
+      });
     });
   }
 
