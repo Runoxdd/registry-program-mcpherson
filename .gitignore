@@ -2,3 +2,5 @@
 .vercel
 *.woff2
 preview.html
+private/
+_certtest.html

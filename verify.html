@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verify a Certificate | McPherson University Registry Lecture 2026</title>
+<meta name="description" content="Check that a McPherson University Registry Lecture certificate is genuine.">
+<meta name="theme-color" content="#0C1C35">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/crest.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..650;1,8..60,400..500&display=swap">
+<link rel="stylesheet" href="styles.css?v=17">
+</head>
+<body class="cert-body">
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="Back to the Registry Lecture main page">
+      <img src="assets/img/crest.png" alt="" width="40" height="44">
+      <span class="brand-text">
+        <span class="brand-name">McPherson University</span>
+        <span class="brand-sub">Maiden Registry Week &amp;<br>2nd Annual Registry Lecture</span>
+      </span>
+    </a>
+    <a class="btn btn-line-dark btn-sm" href="./">Main page</a>
+  </div>
+</header>
+
+<main class="cert-main">
+  <section class="cert-hero">
+    <div class="wrap">
+      <h1>Verify a Certificate</h1>
+      <p class="cert-lede">Check that a Certificate of Attendance for the 2nd Annual Registry Lecture of McPherson University is genuine.</p>
+    </div>
+  </section>
+
+  <section class="wrap cert-panel">
+    <div id="v-result" class="verify-result" hidden aria-live="polite"></div>
+
+    <form id="v-form" class="cert-card" novalidate>
+      <h2>Certificate number</h2>
+      <p>Scan the QR code on the certificate, or type the number printed under it.</p>
+      <label class="field-label" for="v-serial">Certificate number</label>
+      <div class="field-row">
+        <input id="v-serial" name="id" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="MCU-RL26-XXXXXX">
+        <button class="btn btn-gold" type="submit" id="v-submit">Verify</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer cert-footer">
+  <div class="wrap footer-base-row">
+    <p>© 2026 McPherson University Registry. Knowledge, Integrity, Service.</p>
+    <p><a href="certificate">Get your certificate</a></p>
+  </div>
+</footer>
+
+<script src="cert-lookup.js?v=1"></script>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  var out = $("v-result"), btn = $("v-submit");
+
+  function render(kind, serial, rec) {
+    out.hidden = false; out.className = "verify-result is-" + kind;
+    if (kind === "valid") {
+      out.innerHTML = '<p class="verify-badge">Valid certificate</p><h2></h2><dl class="verify-dl">' +
+        '<div><dt>Certificate</dt><dd>Certificate of Attendance</dd></div>' +
+        '<div><dt>Event</dt><dd></dd></div><div><dt>Certificate No.</dt><dd></dd></div>' +
+        '<div><dt>Issued by</dt><dd>Office of the Registrar, McPherson University</dd></div></dl>';
+      out.querySelector("h2").textContent = rec.n;
+      var dds = out.querySelectorAll("dd");
+      dds[1].textContent = rec.e; dds[2].textContent = rec.s;
+    } else if (kind === "pending") {
+      out.innerHTML = "<p class=\"verify-badge\">Not issued yet</p><p>Certificates for the 2nd Annual Registry Lecture have not been issued yet. They become available after the lecture on 19 November 2026.</p>";
+    } else {
+      out.innerHTML = '<p class="verify-badge">No certificate found</p><p>No certificate matches <strong></strong>. Check the number and try again. If you believe this certificate is genuine, contact the Office of the Registrar at registrar@mcu.edu.ng.</p>';
+      out.querySelector("strong").textContent = serial;
+    }
+  }
+
+  function check(serial) {
+    serial = String(serial || "").trim().toUpperCase().replace(/\s+/g, "");
+    if (!serial) return;
+    $("v-serial").value = serial;
+    btn.disabled = true; btn.textContent = "Checking…";
+    MCULookup.lookup("serial", serial).then(function (res) {
+      btn.disabled = false; btn.textContent = "Verify";
+      render(res.status === "found" ? "valid" : res.status === "pending" ? "pending" : "invalid", serial, res.record);
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = "Verify";
+      render("invalid", serial);
+    });
+  }
+
+  $("v-form").addEventListener("submit", function (e) { e.preventDefault(); check($("v-serial").value); });
+  var id = new URLSearchParams(location.search).get("id");
+  if (id) check(id);
+})();
+</script>
+</body>
+</html>

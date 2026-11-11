@@ -1,0 +1,8 @@
+Timestamp,Email Address,Full Name,Phone Number,Institution
+19/11/2026 12:41:03,ada.test@example.com,Ada Okafor,08000000001,McPherson University
+19/11/2026 12:41:30,TUNDE.TEST@Example.com,TUNDE   BALOGUN,08000000002,Covenant University
+19/11/2026 12:42:11,grace.test@example.com,"Dr. Mrs. Grace-Ann O'Neil, Esq.",08000000003,UNILAG
+19/11/2026 12:42:40,ada.test@example.com,Ada Okafor (again),08000000001,McPherson University
+19/11/2026 12:43:02,not-an-email,Broken Row,08000000004,
+19/11/2026 12:43:30,chidi.test@example.com,chidi nwosu,08000000005,FUNAAB
+19/11/2026 12:44:15,  amaka.test@example.com ,Amaka Eze,08000000006,Babcock University

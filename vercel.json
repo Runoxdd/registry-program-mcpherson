@@ -13,6 +13,15 @@
           "value": "attachment; filename=\"registry-lecture-2026.ics\""
         }
       ]
+    },
+    {
+      "source": "/certs/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
     }
   ]
 }
