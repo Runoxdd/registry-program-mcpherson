@@ -20,6 +20,8 @@ Everything editable is in `data.js`:
 - **Speaker links:** `link` makes the name clickable; `links` adds buttons in the biography pop-up. A speaker with a `bio` gets a short excerpt and a "Read full biography" pop-up.
 - **Local Organising Committee:** add members to `committee` as `{ name, role, linkedin }`; `committeeRetired` lists retired members with a note. They appear in the pop-up under Registry → Local Organising Committee.
 - **Former Registrars:** `formerRegistrars` as `{ name, role, years, linkedin }`, oldest first. Shown under Registry → Former Registrars.
+- **Programme:** `schedule` (one entry per day; each session has start, end, title, venue, optional by). During Registry Week the current day opens by default and sessions show Happening now / Up next / Ended. Test any time with `?now=2026-11-16T08:10` on the URL.
+- **Social Impact Awardees:** `awardees` (name, photo, linkedin). `{ name: null }` shows a "To be announced" card.
 - **Hero stats:** `stats` (value, label, note). **Awards line:** `awardsNote`.
 - **Promo video:** put the MP4 (and a poster image) in `assets/video/` and set `promoVideo.mp4` / `promoVideo.poster`. While `mp4` is null a "coming soon" frame shows.
 - **2025 gallery:** `maiden.photos`. Each `src` needs two files: `name.jpg` (full size) and `name-sm.jpg` (thumbnail). The first photo is shown large.

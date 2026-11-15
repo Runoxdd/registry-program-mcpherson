@@ -42,6 +42,39 @@ window.EVENT = {
   email: "registrar@mcu.edu.ng",
   whatsapp: { display: "+234 704 563 1138", number: "2347045631138" }, // chat only, no calls
 
+  /* Registry Week programme, day by day. Times are WAT (24-hour "HH:MM").
+     by: who runs the session (optional). highlight: true marks the lecture. */
+  schedule: [
+    { date: "2026-11-16", sessions: [
+      { start: "08:00", end: "08:30", title: "Opening Dew", venue: "Stephen & Hannah Obaro Multipurpose Hall" },
+      { start: "08:30", end: "09:30", title: "Interactive Campus Awareness Walk / Aerobics Session", venue: "McU Campus" },
+      { start: "10:00", end: "12:00", title: "Artificial Intelligence for Work & Business I", venue: "New Horizon Laboratory, Stephen & Hannah Obaro Multipurpose Hall" }
+    ] },
+    { date: "2026-11-17", sessions: [
+      { start: "09:00", end: "10:30", title: "Artificial Intelligence for Work & Business I", venue: "New Horizon Laboratory, Stephen & Hannah Obaro Multipurpose Hall" },
+      { start: "13:00", end: "14:30", title: "The Smart University Registry: Using AI, Digital Workflows and Data to Work Faster, Serve Better and Make Smarter Decisions", by: "Cubbes", venue: "Council/Senate Chamber" }
+    ] },
+    { date: "2026-11-18", sessions: [
+      { start: "09:00", end: "11:00", title: "Introducing the Registry Automation Solution (REGIX)", by: "Learnflo Hi Ltd.", venue: "Council/Senate Chamber" },
+      { start: "12:00", end: "13:30", title: "Artificial Intelligence for Work & Business I", venue: "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall" }
+    ] },
+    { date: "2026-11-19", sessions: [
+      { start: "10:00", end: "13:00", title: "2nd Annual Registry Lecture & Maiden McU Registry Social Impact Awards", venue: "500-Seater Ultra-modern Lecture Theatre", highlight: true }
+    ] },
+    { date: "2026-11-20", sessions: [
+      { start: "08:00", end: "08:30", title: "Gratitude Dew", venue: "Stephen & Hannah Obaro Multipurpose Hall" },
+      { start: "09:00", end: "10:00", title: "Registry Week Xtra", venue: "Council/Senate Chamber" },
+      { start: "10:00", end: "12:00", title: "Working with the Registry Automation Solution (REGIX)", by: "Learnflo Hi Ltd.", venue: "Council/Senate Chamber" }
+    ] }
+  ],
+
+  // McU Registry Social Impact Awardees. name: null shows a "to be announced" card.
+  awardees: [
+    { name: "Faithia Afolabi", photo: "assets/img/awardee-afolabi.jpg", linkedin: "https://www.linkedin.com/in/fathia-afolabi-a85957320/" },
+    { name: "Gift Joshua", photo: "assets/img/awardee-joshua.jpg", linkedin: "https://www.linkedin.com/in/gift-joshua/" },
+    { name: null }
+  ],
+
   // Same order as the flier
   speakers: [
     {

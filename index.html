@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..650;1,8..60,400..500&display=swap">
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=18">
 </head>
 <body>
 
@@ -80,13 +80,13 @@
         <p class="plate-time">10:00 am WAT</p>
 
         <ol class="week-strip" aria-label="Registry Week, 16 to 20 November">
-          <li><span>Mon</span>16</li>
-          <li><span>Tue</span>17</li>
-          <li><span>Wed</span>18</li>
-          <li class="is-lecture" aria-current="date"><span>Thu</span>19</li>
-          <li><span>Fri</span>20</li>
+          <li><a href="#programme" data-goto-day="2026-11-16" aria-label="Monday 16 November programme"><span>Mon</span>16</a></li>
+          <li><a href="#programme" data-goto-day="2026-11-17" aria-label="Tuesday 17 November programme"><span>Tue</span>17</a></li>
+          <li><a href="#programme" data-goto-day="2026-11-18" aria-label="Wednesday 18 November programme"><span>Wed</span>18</a></li>
+          <li class="is-lecture"><a href="#programme" data-goto-day="2026-11-19" aria-label="Thursday 19 November programme, the Registry Lecture"><span>Thu</span>19</a></li>
+          <li><a href="#programme" data-goto-day="2026-11-20" aria-label="Friday 20 November programme"><span>Fri</span>20</a></li>
         </ol>
-        <p class="strip-note">Registry Week runs daily from 10:00 am. The lecture is on Thursday.</p>
+        <p class="strip-note">Registry Week activities run every day. Tap a day to see its programme.</p>
 
         <div class="countdown" id="countdown" aria-live="polite">
           <div class="cd-cells">
@@ -113,6 +113,7 @@
         <h2 id="awards-title">Introducing the McU Registry Social Impact Awards</h2>
         <p data-awards-note hidden></p>
       </div>
+      <a class="awards-link" href="#awardees">Meet the awardees</a>
     </div>
   </section>
 
@@ -135,6 +136,28 @@
         <p>The lecture brings together higher education professionals from all over Nigeria.</p>
       </div>
       <div class="speaker-list" id="speaker-list"></div>
+    </div>
+  </section>
+
+  <!-- SOCIAL IMPACT AWARDEES -->
+  <section class="section awardees" id="awardees">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Social Impact Awardees</h2>
+        <p>The maiden McU Registry Social Impact Awards are presented at the 2nd Annual Registry Lecture on Thursday 19 November 2026.</p>
+      </div>
+      <div class="awardee-list" id="awardee-list"></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME (day by day) -->
+  <section class="section schedule" id="programme">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Programme</h2>
+        <p>Registry Week runs from Monday 16 to Friday 20 November 2026. Choose a day to see its sessions, times and venues.</p>
+      </div>
+      <div class="sched" id="sched"></div>
     </div>
   </section>
 
@@ -163,22 +186,11 @@
     </div>
   </section>
 
-  <!-- PROGRAMME + ATTENDANCE -->
-  <section class="section attend" id="programme">
+  <!-- HOW TO ATTEND -->
+  <section class="section attend" id="attend">
     <div class="wrap attend-grid">
       <div class="attend-modes">
-        <h2>Programme</h2>
-        <dl class="prog">
-          <div class="prog-item is-lecture">
-            <dt><span class="prog-day">Thursday</span><span class="prog-date">19 November 2026</span><span class="prog-time">10:00 am</span></dt>
-            <dd><strong>2nd Annual Registry Lecture</strong>The Smart Registry: Leveraging AI for Efficiency, Compliance &amp; Service Delivery. 500-Seater Ultra-modern Lecture Theatre.</dd>
-          </div>
-          <div class="prog-item">
-            <dt><span class="prog-day">Monday to Friday</span><span class="prog-date">16 to 20 November 2026</span><span class="prog-time">Daily from 10:00 am</span></dt>
-            <dd><strong>1st Registry Week</strong>Five days of Registry activities at McPherson University, with the Registry Lecture as the highlight on Thursday.</dd>
-          </div>
-        </dl>
-        <h3 class="attend-sub">How to attend</h3>
+        <h2>How to attend</h2>
         <article class="mode">
           <h3>In person</h3>
           <p>500-Seater Ultra-modern Lecture Theatre, McPherson University, Seriki Sotayo, Ogun State.</p>
@@ -427,7 +439,7 @@
   </div>
 </footer>
 
-<script src="data.js?v=20"></script>
-<script src="app.js?v=16"></script>
+<script src="data.js?v=21"></script>
+<script src="app.js?v=17"></script>
 </body>
 </html>

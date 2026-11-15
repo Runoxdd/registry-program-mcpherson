@@ -187,6 +187,118 @@
     }
   }
 
+  /* ---------- social impact awardees ---------- */
+  var al = $("#awardee-list");
+  if (al && E.awardees) {
+    al.innerHTML = E.awardees.map(function (a) {
+      if (!a.name) {
+        return '<article class="awardee is-tba"><div class="awardee-photo awardee-tba" aria-hidden="true"><span class="squares"><i></i><i></i><i></i><i></i></span></div>' +
+          '<div class="awardee-body"><p class="awardee-role">McU Registry Social Impact Awardee</p><h3>To be announced</h3></div></article>';
+      }
+      var name = a.linkedin
+        ? '<a class="name-link" href="' + esc(a.linkedin) + '" target="_blank" rel="noopener" aria-label="' + esc(a.name) + ' on LinkedIn (opens in a new tab)">' + esc(a.name) + EXT + "</a>"
+        : esc(a.name);
+      return '<article class="awardee"><div class="awardee-photo"><img src="' + esc(a.photo) + '" alt="Portrait of ' + esc(a.name) + '" loading="lazy" width="480" height="480"></div>' +
+        '<div class="awardee-body"><p class="awardee-role">McU Registry Social Impact Awardee</p><h3>' + name + "</h3></div></article>";
+    }).join("");
+  }
+
+  /* ---------- day-by-day programme ---------- */
+  var sched = $("#sched");
+  if (sched && E.schedule) {
+    var DOWS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var nowOverride = new URLSearchParams(location.search).get("now"); // e.g. ?now=2026-11-16T08:10 for testing
+    function nowMs() { return nowOverride ? new Date(nowOverride + ":00+01:00").getTime() : Date.now(); }
+    function at(date, hm) { return new Date(date + "T" + hm + ":00+01:00").getTime(); }
+    function watDate(ms) { var d = new Date(ms + 3600000); return d.toISOString().slice(0, 10); }
+    function hm12(hm) {
+      var h = +hm.slice(0, 2), m = hm.slice(3);
+      if (h === 12 && m === "00") return { t: "12 noon", ap: "" };
+      return { t: ((h % 12) || 12) + ":" + m, ap: h < 12 ? "am" : "pm" };
+    }
+    function range(s, e) {
+      var a = hm12(s), b = hm12(e);
+      if (a.ap && a.ap === b.ap) return a.t + "–" + b.t + " " + b.ap;
+      return a.t + (a.ap ? " " + a.ap : "") + " – " + b.t + (b.ap ? " " + b.ap : "");
+    }
+    function dayInfo(date) {
+      var d = new Date(date + "T12:00:00+01:00");
+      return { dow: DOWS[d.getUTCDay()], short: DOWS[d.getUTCDay()].slice(0, 3), num: d.getUTCDate(), month: MONTHS[d.getUTCMonth()] };
+    }
+
+    var tabsHtml = '<div class="sched-tabs" role="tablist" aria-label="Choose a day">';
+    var panelsHtml = "";
+    E.schedule.forEach(function (day, i) {
+      var di = dayInfo(day.date), lecture = day.sessions.some(function (s) { return s.highlight; });
+      tabsHtml += '<button class="sched-tab' + (lecture ? " is-lecture" : "") + '" type="button" role="tab" id="stab-' + day.date + '" aria-controls="sday-' + day.date + '" aria-selected="false" tabindex="-1" data-date="' + day.date + '">' +
+        '<span class="st-day">Day ' + (i + 1) + '</span><span class="st-dow">' + di.short + '</span><span class="st-num">' + di.num + "</span>" +
+        (lecture ? '<span class="st-flag">Lecture</span>' : '<span class="st-today" hidden>Today</span>') + "</button>";
+      panelsHtml += '<div class="sched-panel" role="tabpanel" id="sday-' + day.date + '" aria-labelledby="stab-' + day.date + '">' +
+        '<h3 class="sched-day-title">Day ' + (i + 1) + ", " + di.dow + " " + di.num + " " + di.month + "</h3>" +
+        '<ol class="sessions">' + day.sessions.map(function (s, k) {
+          return '<li class="session' + (s.highlight ? " is-highlight" : "") + '" data-start="' + at(day.date, s.start) + '" data-end="' + at(day.date, s.end) + '">' +
+            '<div class="session-time"><time datetime="' + day.date + "T" + s.start + '+01:00">' + range(s.start, s.end) + '</time><span class="session-status" hidden></span></div>' +
+            '<div class="session-body"><h4>' + esc(s.title) + "</h4>" +
+            '<p class="session-meta"><span class="sm-label">Venue</span> ' + esc(s.venue) + "</p>" +
+            (s.by ? '<p class="session-meta"><span class="sm-label">Facilitator</span> ' + esc(s.by) + "</p>" : "") +
+            "</div></li>";
+        }).join("") + "</ol></div>";
+    });
+    sched.innerHTML = tabsHtml + "</div>" + panelsHtml;
+    sched.classList.add("is-tabbed");
+
+    var stabs = $all(".sched-tab", sched);
+    function pick(date, focus) {
+      stabs.forEach(function (t) {
+        var on = t.getAttribute("data-date") === date;
+        t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+        if (on && focus) t.focus();
+      });
+    }
+    stabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { pick(t.getAttribute("data-date")); });
+      t.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = stabs[(i + 1) % stabs.length];
+        if (e.key === "ArrowLeft") n = stabs[(i - 1 + stabs.length) % stabs.length];
+        if (e.key === "Home") n = stabs[0];
+        if (e.key === "End") n = stabs[stabs.length - 1];
+        if (n) { e.preventDefault(); pick(n.getAttribute("data-date"), true); }
+      });
+    });
+    $all("[data-goto-day]").forEach(function (a) {
+      a.addEventListener("click", function () { pick(a.getAttribute("data-goto-day")); });
+    });
+
+    function refresh() {
+      var now = nowMs(), today = watDate(now);
+      stabs.forEach(function (t) {
+        var flag = $(".st-today", t); if (flag) flag.hidden = t.getAttribute("data-date") !== today;
+        t.classList.toggle("is-today", t.getAttribute("data-date") === today);
+      });
+      $all(".sched-panel", sched).forEach(function (panel) {
+        var nextMarked = false;
+        $all(".session", panel).forEach(function (li) {
+          var st = +li.getAttribute("data-start"), en = +li.getAttribute("data-end"), lab = $(".session-status", li);
+          var state = now >= en ? "ended" : now >= st ? "now" : "";
+          if (!state && !nextMarked && watDate(st) === today) { state = "next"; nextMarked = true; }
+          li.classList.toggle("is-now", state === "now");
+          li.classList.toggle("is-ended", state === "ended");
+          lab.hidden = !state;
+          lab.className = "session-status" + (state ? " is-" + state : "");
+          lab.textContent = state === "now" ? "Happening now" : state === "next" ? "Up next" : state === "ended" ? "Ended" : "";
+        });
+      });
+      return today;
+    }
+    var today = refresh();
+    var hasToday = E.schedule.some(function (d) { return d.date === today; });
+    pick(hasToday ? today : E.schedule[0].date);
+    setInterval(refresh, 60000);
+  }
+
   /* ---------- former registrars ---------- */
   var rDlg = $("#registrars-dialog");
   var regs = E.formerRegistrars || [];
