@@ -84,7 +84,13 @@
   var lastOpener = null;
   function openBio(id, opener) {
     var sp = E.speakers.filter(function (s) { return s.id === id; })[0];
-    if (!sp) return;
+    if (!sp) {
+      var aw = (E.awardees || []).filter(function (x) { return x.id === id; })[0];
+      if (!aw) return;
+      sp = { name: aw.name, photo: aw.photo, role: "McU Registry Social Impact Awardee", title: "", bio: aw.bio, bioTitle: aw.bioTitle,
+             link: aw.linkedin ? { label: "LinkedIn", url: aw.linkedin } : null,
+             links: aw.linkedin ? [{ label: "LinkedIn", url: aw.linkedin }] : [] };
+    }
     $("#bio-photo").src = sp.photo; $("#bio-photo").alt = "Portrait of " + sp.name;
     $("#bio-role").textContent = sp.role;
     $("#bio-name").innerHTML = nameHtml(sp);
@@ -199,8 +205,13 @@
         ? '<a class="name-link" href="' + esc(a.linkedin) + '" target="_blank" rel="noopener" aria-label="' + esc(a.name) + ' on LinkedIn (opens in a new tab)">' + esc(a.name) + EXT + "</a>"
         : esc(a.name);
       return '<article class="awardee"><div class="awardee-photo"><img src="' + esc(a.photo) + '" alt="Portrait of ' + esc(a.name) + '" loading="lazy" width="480" height="480"></div>' +
-        '<div class="awardee-body"><p class="awardee-role">McU Registry Social Impact Awardee</p><h3>' + name + "</h3></div></article>";
+        '<div class="awardee-body"><p class="awardee-role">McU Registry Social Impact Awardee</p><h3>' + name + "</h3>" +
+        (a.bio ? '<button class="text-link bio-open awardee-bio-open" type="button" data-bio="' + esc(a.id) + '">Read biography</button>' : "") +
+        "</div></article>";
     }).join("");
+    $all(".awardee-bio-open", al).forEach(function (b) {
+      b.addEventListener("click", function () { openBio(b.getAttribute("data-bio"), b); });
+    });
   }
 
   /* ---------- day-by-day programme ---------- */

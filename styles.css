@@ -699,3 +699,4 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 @media (prefers-reduced-motion: reduce) { .sched-tab, .week-strip li { transition: none; } }
 .session.is-highlight.is-now { margin-left: 0; padding-left: 1.25rem; }
+.awardee-bio-open { margin-top: .375rem; font-size: .875rem; }

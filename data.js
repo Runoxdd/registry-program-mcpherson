@@ -46,33 +46,34 @@ window.EVENT = {
      by: who runs the session (optional). highlight: true marks the lecture. */
   schedule: [
     { date: "2026-11-16", sessions: [
-      { start: "08:00", end: "08:30", title: "Opening Dew", venue: "Stephen & Hannah Obaro Multipurpose Hall" },
-      { start: "08:30", end: "09:30", title: "Interactive Campus Awareness Walk / Aerobics Session", venue: "McU Campus" },
-      { start: "10:00", end: "12:00", title: "Artificial Intelligence for Work & Business I", venue: "New Horizon Laboratory, Stephen & Hannah Obaro Multipurpose Hall" }
+      {"start": "08:00", "end": "08:30", "title": "Opening Dew", "venue": "Stephen & Hannah Obaro Multipurpose Hall"},
+      {"start": "08:30", "end": "09:30", "title": "Aerobics Session / Interactive Campus Awareness Walk", "venue": "McU Campus"}
     ] },
     { date: "2026-11-17", sessions: [
-      { start: "09:00", end: "10:30", title: "Artificial Intelligence for Work & Business I", venue: "New Horizon Laboratory, Stephen & Hannah Obaro Multipurpose Hall" },
-      { start: "13:00", end: "14:30", title: "The Smart University Registry: Using AI, Digital Workflows and Data to Work Faster, Serve Better and Make Smarter Decisions", by: "Cubbes", venue: "Council/Senate Chamber" }
+      {"start": "09:00", "end": "10:30", "title": "Artificial Intelligence for Work & Business I", "venue": "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall"},
+      {"start": "12:30", "end": "14:00", "title": "Artificial Intelligence for Work & Business II", "venue": "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall"}
     ] },
     { date: "2026-11-18", sessions: [
-      { start: "09:00", end: "11:00", title: "Introducing the Registry Automation Solution (REGIX)", by: "Learnflo Hi Ltd.", venue: "Council/Senate Chamber" },
-      { start: "12:00", end: "13:30", title: "Artificial Intelligence for Work & Business I", venue: "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall" }
+      {"start": "09:00", "end": "10:30", "title": "The Smart University Registry: Using AI, Digital Workflows and Data to Work Faster, Serve Better and Make Smarter Decisions", "venue": "Council/Senate Chamber", "by": "Cubbes"},
+      {"start": "11:00", "end": "13:00", "title": "Introducing the Registry Automation Solution (REGIX)", "venue": "Council/Senate Chamber", "by": "Learnflo Hi Ltd."}
     ] },
     { date: "2026-11-19", sessions: [
-      { start: "10:00", end: "13:00", title: "2nd Annual Registry Lecture & Maiden McU Registry Social Impact Awards", venue: "500-Seater Ultra-modern Lecture Theatre", highlight: true }
+      {"start": "10:00", "end": "13:00", "title": "2nd Annual Registry Lecture & Maiden McU Registry Social Impact Awards", "venue": "500-Seater Ultra-modern Lecture Theatre", "highlight": true}
     ] },
     { date: "2026-11-20", sessions: [
-      { start: "08:00", end: "08:30", title: "Gratitude Dew", venue: "Stephen & Hannah Obaro Multipurpose Hall" },
-      { start: "09:00", end: "10:00", title: "Registry Week Xtra", venue: "Council/Senate Chamber" },
-      { start: "10:00", end: "12:00", title: "Working with the Registry Automation Solution (REGIX)", by: "Learnflo Hi Ltd.", venue: "Council/Senate Chamber" }
+      {"start": "08:00", "end": "08:30", "title": "Gratitude Dew", "venue": "Stephen & Hannah Obaro Multipurpose Hall"},
+      {"start": "09:00", "end": "10:00", "title": "Registry Week Xtra", "venue": "Council/Senate Chamber"},
+      {"start": "10:00", "end": "12:00", "title": "Working with the Registry Automation Solution (REGIX)", "venue": "Council/Senate Chamber", "by": "Learnflo Hi Ltd."}
     ] }
   ],
 
   // McU Registry Social Impact Awardees. name: null shows a "to be announced" card.
   awardees: [
-    { name: "Faithia Afolabi", photo: "assets/img/awardee-afolabi.jpg", linkedin: "https://www.linkedin.com/in/fathia-afolabi-a85957320/" },
-    { name: "Gift Joshua", photo: "assets/img/awardee-joshua.jpg", linkedin: "https://www.linkedin.com/in/gift-joshua/" },
-    { name: "Elder Julius Adebowale Obajobi", photo: "assets/img/awardee-obajobi.jpg", linkedin: null }
+    { id: "afolabi", name: "Faithia Afolabi", photo: "assets/img/awardee-afolabi.jpg", linkedin: "https://www.linkedin.com/in/fathia-afolabi-a85957320/" },
+    { id: "obajobi", name: "Elder Julius Adebowale Obajobi", photo: "assets/img/awardee-obajobi.jpg", linkedin: null,
+      bioTitle: "A symbol of resilience, excellence and environmental stewardship",
+      bio: "A beautiful, green and well-maintained campus does not happen by chance; it is the product of consistent care, hard work and dedicated hands. Since joining McPherson University in March 2024, Mr. Julius Adebowale Obajobi has distinguished himself through exceptional punctuality, consistency, and an unwavering commitment to duty. His daily efforts have helped maintain lush lawns, healthy vegetation, and beautifully landscaped surroundings, enhancing the University’s aesthetic appeal and creating a serene, welcoming environment for learning.\n\nBeyond beautification, his work contributes meaningfully to environmental sustainability and climate change mitigation. Through the cultivation of vegetation and the preservation of green spaces, he supports carbon absorption, improved air quality, and natural temperature regulation, reinforcing the University’s commitment to a greener, more climate-conscious environment.\n\nWhat sets Mr. Obajobi apart is his remarkable work ethic. Regardless of the weather or the routine nature of his assignment, he remains dependable, diligent, and consistently present at his duty post. His example is a compelling reminder that one’s position does not determine excellence, but rather the dedication, integrity and value one brings to the job.\n\nBorn on 1 October 1960, Nigeria’s Independence Day, Mr. Obajobi’s life reflects the resilience and perseverance that have characterised his professional journey. After completing his secondary education at Olurogbo High School, Ile-Ife, in 1975, he acquired printing skills under his uncle between 1980 and 1984. He subsequently joined Onward Paper Mill in Lagos in 1988, where he served as a Machine Operator for 17 years, until 2005.\n\nFrom his early technical apprenticeship to decades of industrial service and his present contribution to the University’s environment, Mr. Obajobi has demonstrated that dedication, resilience and excellence are enduring virtues.\n\nIn recognition of his exemplary work ethic, remarkable resilience, steadfast commitment to duty, and invaluable contributions to environmental sustainability and the University’s physical development, Mr. Obajobi is a proud recipient of the McU Registry Maiden Social Impact Award." },
+    { id: "joshua", name: "Gift Joshua", photo: "assets/img/awardee-joshua.jpg", linkedin: "https://www.linkedin.com/in/gift-joshua/" }
   ],
 
   // Same order as the flier
