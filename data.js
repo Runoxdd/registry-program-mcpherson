@@ -72,7 +72,7 @@ window.EVENT = {
   awardees: [
     { name: "Faithia Afolabi", photo: "assets/img/awardee-afolabi.jpg", linkedin: "https://www.linkedin.com/in/fathia-afolabi-a85957320/" },
     { name: "Gift Joshua", photo: "assets/img/awardee-joshua.jpg", linkedin: "https://www.linkedin.com/in/gift-joshua/" },
-    { name: null }
+    { name: "Elder Julius Adebowale Obajobi", photo: "assets/img/awardee-obajobi.jpg", linkedin: null }
   ],
 
   // Same order as the flier
