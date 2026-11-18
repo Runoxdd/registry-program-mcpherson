@@ -252,7 +252,8 @@
             '<div class="session-time"><time datetime="' + day.date + "T" + s.start + '+01:00">' + range(s.start, s.end) + '</time><span class="session-status" hidden></span></div>' +
             '<div class="session-body"><h4>' + esc(s.title) + "</h4>" +
             '<p class="session-meta"><span class="sm-label">Venue</span> ' + esc(s.venue) + "</p>" +
-            (s.by ? '<p class="session-meta"><span class="sm-label">Facilitator</span> ' + esc(s.by) + "</p>" : "") +
+            (s.by ? '<p class="session-meta"><span class="sm-label">Facilitator</span> ' +
+              (s.byUrl ? '<a class="text-link fac-link" href="' + esc(s.byUrl) + '" target="_blank" rel="noopener">' + esc(s.by) + EXT + "</a>" : esc(s.by)) + "</p>" : "") +
             "</div></li>";
         }).join("") + "</ol></div>";
     });

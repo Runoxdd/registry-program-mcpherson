@@ -51,11 +51,11 @@ window.EVENT = {
     ] },
     { date: "2026-11-17", sessions: [
       {"start": "09:00", "end": "10:30", "title": "The Smart University Registry: Using AI, Digital Workflows and Data to Work Faster, Serve Better and Make Smarter Decisions", "venue": "Council/Senate Chamber", "by": "Cubbes"},
-      {"start": "12:30", "end": "14:00", "title": "Artificial Intelligence for Work & Business I", "venue": "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall"}
+      {"start": "12:30", "end": "14:00", "title": "Artificial Intelligence for Work & Business I", "venue": "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall", "by": "New Horizon"}
     ] },
     { date: "2026-11-18", sessions: [
-      {"start": "09:00", "end": "10:30", "title": "Artificial Intelligence for Work & Business II", "venue": "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall"},
-      {"start": "11:00", "end": "13:00", "title": "Introducing the Registry Automation Solution (REGIX)", "venue": "Council/Senate Chamber", "by": "Learnflo Hi Ltd."}
+      {"start": "09:00", "end": "10:30", "title": "Artificial Intelligence for Work & Business II", "venue": "New Horizon Computer Laboratory, Stephen & Hannah Obaro Multipurpose Hall", "by": "New Horizon"},
+      {"start": "11:00", "end": "13:00", "title": "Introducing the Registry Automation Solution (REGIX)", "venue": "Council/Senate Chamber", "by": "Learnflo Hi Ltd.", "byUrl": "https://www.learnflo.school"}
     ] },
     { date: "2026-11-19", sessions: [
       {"start": "10:00", "end": "13:00", "title": "2nd Annual Registry Lecture & Maiden McU Registry Social Impact Awards", "venue": "500-Seater Ultra-modern Lecture Theatre", "highlight": true}
@@ -63,7 +63,7 @@ window.EVENT = {
     { date: "2026-11-20", sessions: [
       {"start": "08:00", "end": "08:30", "title": "Gratitude Dew", "venue": "Stephen & Hannah Obaro Multipurpose Hall"},
       {"start": "09:00", "end": "10:00", "title": "Registry Week Xtra", "venue": "Council/Senate Chamber"},
-      {"start": "10:00", "end": "12:00", "title": "Working with the Registry Automation Solution (REGIX)", "venue": "Council/Senate Chamber", "by": "Learnflo Hi Ltd."}
+      {"start": "10:00", "end": "12:00", "title": "Working with the Registry Automation Solution (REGIX)", "venue": "Council/Senate Chamber", "by": "Learnflo Hi Ltd.", "byUrl": "https://www.learnflo.school"}
     ] }
   ],
 
