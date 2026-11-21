@@ -702,3 +702,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .awardee-bio-open { margin-top: .375rem; font-size: .875rem; }
 .fac-link { font-family: var(--f-body); font-weight: 400; font-size: inherit; }
 .fac-link .ext { margin-left: .25em; }
+.credit { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .375rem; }
+.credit-contact a { color: var(--gold); font-family: var(--f-display); font-weight: 650; text-decoration: none; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.credit-contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 520px) { .credit-sep { display: none; } .credit-contact { flex-basis: 100%; } }
