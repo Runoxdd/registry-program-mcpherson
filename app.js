@@ -14,6 +14,7 @@
   function ext(a, url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
   $all("[data-register]").forEach(function (a) { ext(a, E.registerUrl); });
   $all("[data-past]").forEach(function (a) { ext(a, E.pastLectureUrl); });
+  $all("[data-rec]").forEach(function (a) { ext(a, E.lectureRecording || E.pastLectureUrl); });
   $all("[data-map]").forEach(function (a) { ext(a, E.mapUrl); });
   $all("[data-email]").forEach(function (el) { el.textContent = E.email; });
   $all("[data-mailto]").forEach(function (a) { a.href = "mailto:" + E.email; });
@@ -284,8 +285,10 @@
       a.addEventListener("click", function () { pick(a.getAttribute("data-goto-day")); });
     });
 
+    var lastDay = E.schedule[E.schedule.length - 1], lastSess = lastDay.sessions[lastDay.sessions.length - 1];
+    var weekOver = function () { return nowMs() > at(lastDay.date, lastSess.end); };
     function refresh() {
-      var now = nowMs(), today = watDate(now);
+      var now = nowMs(), today = watDate(now), over = weekOver();
       stabs.forEach(function (t) {
         var flag = $(".st-today", t); if (flag) flag.hidden = t.getAttribute("data-date") !== today;
         t.classList.toggle("is-today", t.getAttribute("data-date") === today);
@@ -294,7 +297,7 @@
         var nextMarked = false;
         $all(".session", panel).forEach(function (li) {
           var st = +li.getAttribute("data-start"), en = +li.getAttribute("data-end"), lab = $(".session-status", li);
-          var state = now >= en ? "ended" : now >= st ? "now" : "";
+          var state = over ? "" : now >= en ? "ended" : now >= st ? "now" : "";
           if (!state && !nextMarked && watDate(st) === today) { state = "next"; nextMarked = true; }
           li.classList.toggle("is-now", state === "now");
           li.classList.toggle("is-ended", state === "ended");
@@ -307,7 +310,8 @@
     }
     var today = refresh();
     var hasToday = E.schedule.some(function (d) { return d.date === today; });
-    pick(hasToday ? today : E.schedule[0].date);
+    var lectureDay = E.schedule.filter(function (d) { return d.sessions.some(function (s) { return s.highlight; }); })[0];
+    pick(hasToday ? today : (weekOver() && lectureDay ? lectureDay.date : E.schedule[0].date));
     setInterval(refresh, 60000);
   }
 
@@ -330,27 +334,85 @@
     });
   }
 
-  /* ---------- maiden lecture + gallery ---------- */
-  var M = E.maiden;
-  if (M) {
-    $all("[data-album]").forEach(function (a) { ext(a, M.albumUrl); });
-    $("[data-maiden-theme]").textContent = "“" + M.theme + "”";
-    $("[data-maiden-meta]").textContent = M.date + ", " + M.venue;
-    $("#gallery").innerHTML = M.photos.map(function (ph, i) {
-      return '<button class="g-item' + (i === 0 ? " is-lead" : "") + '" type="button" data-index="' + i + '" aria-label="View photo: ' + esc(ph.caption) + '">' +
-        '<img src="' + esc(ph.src) + '-sm.jpg" alt="' + esc(ph.caption) + '" loading="lazy" width="900" height="600"></button>';
+  /* ---------- throwbacks: one tab per past edition ---------- */
+  var TB = E.throwbacks || [];
+  var album = TB.filter(function (t) { return t.year === "2025"; })[0];
+  if (album && album.albumUrl) $all("[data-album]").forEach(function (a) { ext(a, album.albumUrl); });
+  var tbEl = $("#tb");
+  if (tbEl && TB.length) {
+    var PLAY = '<span class="play" aria-hidden="true"></span>';
+    var html = TB.length > 1 ? '<div class="tb-tabs" role="tablist" aria-label="Choose a year">' + TB.map(function (t, i) {
+      return '<button class="tb-tab" type="button" role="tab" id="tbt-' + esc(t.year) + '" aria-controls="tbp-' + esc(t.year) + '" aria-selected="' + (i === 0) + '"' + (i ? ' tabindex="-1"' : "") + ">" +
+        '<span class="tb-year">' + esc(t.year) + '</span><span class="tb-ed">' + esc(t.edition) + "</span></button>";
+    }).join("") + "</div>" : "";
+    html += TB.map(function (t, i) {
+      var media = "";
+      var cards = (t.clips || []).map(function (c) {
+        return '<figure class="tb-clip"><div class="tb-clip-frame"><video controls preload="none" playsinline' + (c.poster ? ' poster="' + esc(c.poster) + '"' : "") + ' aria-label="' + esc(t.year + " Registry Week, " + c.label) + '">' +
+          '<source src="' + esc(c.mp4) + '" type="video/mp4"></video></div>' +
+          '<figcaption><span class="tb-clip-label">' + esc(c.label) + '</span><span class="tb-clip-sub">' + esc(c.sub || "") + "</span></figcaption></figure>";
+      }).join("");
+      if (t.booklet) {
+        cards += '<figure class="tb-clip tb-booklet"><a class="tb-clip-frame" href="' + esc(t.booklet.pdf) + '" target="_blank" rel="noopener" aria-label="Open the ' + esc(t.year) + ' programme e-booklet (PDF)">' +
+          '<img src="' + esc(t.booklet.cover) + '" alt="" loading="lazy" width="910" height="1287"><span class="tb-booklet-badge">PDF</span></a>' +
+          '<figcaption><span class="tb-clip-label">' + esc(t.booklet.label || "E-booklet") + '</span><span class="tb-clip-sub"><a class="text-link" href="' + esc(t.booklet.pdf) + '" target="_blank" rel="noopener">Open the PDF</a></span></figcaption></figure>';
+      }
+      if (cards) media += '<div class="tb-clips">' + cards + "</div>";
+      if (t.photos && t.photos.length) {
+        media += '<div class="gallery">' + t.photos.map(function (ph, k) {
+          return '<button class="g-item' + (k === 0 ? " is-lead" : "") + '" type="button" data-tb="' + i + '" data-index="' + k + '" aria-label="View photo: ' + esc(ph.caption) + '">' +
+            '<img src="' + esc(ph.src) + '-sm.jpg" alt="' + esc(ph.caption) + '" loading="lazy" width="900" height="600"></button>';
+        }).join("") + "</div>";
+      }
+      if (t.albumUrl) media += '<p class="album-row"><a class="album-link" href="' + esc(t.albumUrl) + '" target="_blank" rel="noopener"><span class="al-title">View the full photo album</span><span class="al-sub">Google Photos</span></a></p>';
+      return '<div class="tb-panel" role="' + (TB.length > 1 ? "tabpanel" : "region") + '" id="tbp-' + esc(t.year) + '"' + (TB.length > 1 ? ' aria-labelledby="tbt-' + esc(t.year) + '"' : "") + (i ? " hidden" : "") + ">" +
+        '<div class="maiden-head"><div class="maiden-copy">' +
+          '<p class="maiden-kicker">' + esc(t.edition) + ", " + esc(t.year) + "</p>" +
+          "<h3>" + esc(t.title) + "</h3>" +
+          (t.theme ? '<p class="maiden-theme">' + esc(t.theme) + "</p>" : "") +
+          '<p class="maiden-meta">' + esc([t.date, t.venue].filter(Boolean).join(" · ")) + "</p>" +
+        "</div>" +
+        (t.recording ? '<div class="maiden-actions"><a class="maiden-link" href="' + esc(t.recording) + '" target="_blank" rel="noopener">' + PLAY +
+          '<span class="maiden-link-text"><span class="maiden-link-title">Watch the full lecture</span><span class="maiden-link-sub">Recording on YouTube</span></span></a></div>' : "") +
+        "</div>" + media + "</div>";
     }).join("");
+    tbEl.innerHTML = html;
 
-    var lb = $("#lightbox"), lbImg = $("#lb-img"), cur = 0, lbOpener = null;
-    function showPhoto(i) {
-      cur = (i + M.photos.length) % M.photos.length;
-      var ph = M.photos[cur];
+    var tbTabs = $all(".tb-tab", tbEl);
+    function pickYear(tab, focus) {
+      tbTabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+      $all("video", tbEl).forEach(function (v) { if (!v.paused) v.pause(); });
+      if (focus) tab.focus();
+    }
+    tbTabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { pickYear(t); });
+      t.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = tbTabs[(i + 1) % tbTabs.length];
+        if (e.key === "ArrowLeft") n = tbTabs[(i - 1 + tbTabs.length) % tbTabs.length];
+        if (n) { e.preventDefault(); pickYear(n, true); }
+      });
+    });
+    // only one clip plays at a time
+    $all("video", tbEl).forEach(function (v) {
+      v.addEventListener("play", function () { $all("video").forEach(function (o) { if (o !== v && !o.paused) o.pause(); }); });
+    });
+
+    var lb = $("#lightbox"), lbImg = $("#lb-img"), cur = 0, curSet = [], lbOpener = null;
+    function showPhoto(k) {
+      cur = (k + curSet.length) % curSet.length;
+      var ph = curSet[cur];
       lbImg.src = ph.src + ".jpg"; lbImg.alt = ph.caption;
       $("#lb-caption").textContent = ph.caption;
-      $("#lb-count").textContent = (cur + 1) + " of " + M.photos.length;
+      $("#lb-count").textContent = (cur + 1) + " of " + curSet.length;
     }
-    $all(".g-item").forEach(function (b) {
+    $all(".g-item", tbEl).forEach(function (b) {
       b.addEventListener("click", function () {
+        curSet = TB[+b.getAttribute("data-tb")].photos;
         lbOpener = b; showPhoto(+b.getAttribute("data-index")); showDialog(lb); $(".lb-close").focus();
       });
     });

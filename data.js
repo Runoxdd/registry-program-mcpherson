@@ -38,7 +38,8 @@ window.EVENT = {
      captions: optional WebVTT (.vtt) file if the video has speech. */
   promoVideo: { mp4: "assets/video/registry-lecture-2026.mp4", poster: "assets/video/poster.jpg", captions: null, ratio: "16 / 9" },
 
-  pastLectureUrl: "https://youtu.be/PUhL5goij88", // maiden (1st) Annual Registry Lecture
+  pastLectureUrl: "https://youtu.be/PUhL5goij88", // 2025 (1st) Annual Registry Lecture
+  lectureRecording: "https://www.youtube.com/live/cHwB9fzzJnY", // 2026 (2nd) Annual Registry Lecture
   email: "registrar@mcu.edu.ng",
   whatsapp: { display: "+234 704 563 1138", number: "2347045631138" }, // chat only, no calls
 
@@ -171,19 +172,40 @@ window.EVENT = {
     { name: "Late Ms. Nengi Kalio", note: "Membership retired following her transition." }
   ],
 
-  // Maiden (1st) Registry Lecture, 2025
-  maiden: {
-    date: "Thursday 17 July 2025",
-    venue: "Multipurpose Hall, McPherson University",
-    theme: "Challenges of University Administration in Nigeria and the Registry on a Rescue Mission",
-    albumUrl: "https://photos.app.goo.gl/1iT9PgUAgVfLUFKK9",
-    // first photo is shown large
-    photos: [
-      { src: "assets/img/2025/group", caption: "Registry staff and guests after the maiden Registry Lecture" },
-      { src: "assets/img/2025/lecturer", caption: "The Guest Lecturer at the podium" },
-      { src: "assets/img/2025/award", caption: "Presentation of the 2025 Excellence Award to the Guest Lecturer" },
-      { src: "assets/img/2025/high-table", caption: "Greetings at the high table" },
-      { src: "assets/img/2025/audience", caption: "Guests in the Multipurpose Hall" }
-    ]
-  }
+  /* Throwbacks: one entry per past edition, newest first. Add next year's at the top.
+     Every field is optional except year and title.
+     recording: full lecture video link · booklet: { pdf, cover } · clips: short videos (vertical is fine)
+     photos: gallery (each src needs name.jpg and name-sm.jpg) · albumUrl: full photo album link */
+  throwbacks: [
+    {
+      year: "2026",
+      edition: "2nd Annual Registry Lecture & Maiden Registry Week",
+      title: "The Smart Registry",
+      theme: "Leveraging AI for Efficiency, Compliance & Service Delivery",
+      date: "16 to 20 November 2026 · Lecture on Thursday 19 November",
+      venue: "500-Seater Ultra-modern Lecture Theatre, McPherson University",
+      recording: "https://www.youtube.com/live/cHwB9fzzJnY",
+      booklet: { pdf: "assets/docs/registry-lecture-2026-e-booklet.pdf", cover: "assets/docs/registry-lecture-2026-e-booklet-cover.jpg", label: "Programme e-booklet" },
+      clips: [
+        { label: "Day 1", sub: "Monday 16 November", mp4: "assets/video/2026/registry-week-day1.mp4", poster: "assets/video/2026/registry-week-day1.jpg" },
+        { label: "Day 2", sub: "Tuesday 17 November", mp4: "assets/video/2026/registry-week-day2.mp4", poster: "assets/video/2026/registry-week-day2.jpg" }
+      ]
+    },
+    {
+      year: "2025",
+      edition: "1st Annual Registry Lecture",
+      title: "Challenges of University Administration in Nigeria and the Registry on a Rescue Mission",
+      date: "Thursday 17 July 2025",
+      venue: "Multipurpose Hall, McPherson University",
+      recording: "https://youtu.be/PUhL5goij88",
+      albumUrl: "https://photos.app.goo.gl/1iT9PgUAgVfLUFKK9",
+      photos: [
+        { src: "assets/img/2025/group", caption: "Registry staff and guests after the maiden Registry Lecture" },
+        { src: "assets/img/2025/lecturer", caption: "The Guest Lecturer at the podium" },
+        { src: "assets/img/2025/award", caption: "Presentation of the 2025 Excellence Award to the Guest Lecturer" },
+        { src: "assets/img/2025/high-table", caption: "Greetings at the high table" },
+        { src: "assets/img/2025/audience", caption: "Guests in the Multipurpose Hall" }
+      ]
+    }
+  ]
 };

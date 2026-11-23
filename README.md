@@ -24,7 +24,7 @@ Everything editable is in `data.js`:
 - **Social Impact Awardees:** `awardees` (name, photo, linkedin). `{ name: null }` shows a "To be announced" card.
 - **Hero stats:** `stats` (value, label, note). **Awards line:** `awardsNote`.
 - **Promo video:** put the MP4 (and a poster image) in `assets/video/` and set `promoVideo.mp4` / `promoVideo.poster`. While `mp4` is null a "coming soon" frame shows.
-- **2025 gallery:** `maiden.photos`. Each `src` needs two files: `name.jpg` (full size) and `name-sm.jpg` (thumbnail). The first photo is shown large.
+- **Throwbacks:** `throwbacks` in data.js, newest first. Add next year's edition at the top: year, edition, title, theme, date, venue, recording (YouTube link), booklet { pdf, cover }, clips [{ label, sub, mp4, poster }], photos (each src needs name.jpg and name-sm.jpg), albumUrl. Each year gets its own tab automatically.
 - **Cache:** after changing CSS/JS, bump the `?v=` number on their tags in index.html. When replacing a photo, give it a new file name.
 
 ## Certificates (2nd Annual Registry Lecture, 19 Nov 2026)
