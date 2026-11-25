@@ -752,3 +752,25 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (min-width: 1361px) { .brand { flex: none; } .brand-name { white-space: nowrap; } }
 @media (max-width: 480px) { .hide-sm { display: none; } }
 @media (max-width: 760px) { .tb-tab { max-width: 10.5rem; padding: .625rem .875rem .75rem; } .tb-year { font-size: 1.625rem; } .tb-ed { font-size: .75rem; } }
+
+/* ---------- throwback album row ---------- */
+.album-row { flex-wrap: wrap; align-items: baseline; gap: .75rem 1.75rem; }
+.photo-credit { margin-right: auto; font-family: var(--f-display); font-size: .8125rem; color: var(--sky); }
+
+/* ---------- in the press ---------- */
+.press { background: var(--paper); }
+.press-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.press-card {
+  height: 100%; display: grid; grid-template-rows: auto 1fr auto; gap: .75rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem); background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--ink);
+  border-radius: 4px; text-decoration: none; color: var(--text); transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.press-card:hover { border-top-color: var(--gold); box-shadow: 0 14px 30px -18px rgba(12, 28, 53, .35); transform: translateY(-2px); }
+.press-meta { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--f-display); font-size: .8125rem; }
+.press-outlet { font-weight: 750; color: var(--gold-deep); }
+.press-year { color: var(--muted); font-variant-numeric: tabular-nums; }
+.press-title { font-family: var(--f-body); font-weight: 600; font-size: clamp(1.125rem, 1.8vw, 1.3125rem); line-height: 1.35; color: var(--ink); text-wrap: pretty; }
+.press-read { font-family: var(--f-display); font-weight: 600; font-size: .875rem; color: var(--steel); }
+.press-card:hover .press-read { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 760px) { .press-list { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .press-card { transition: none; } .press-card:hover { transform: none; } }

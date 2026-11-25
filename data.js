@@ -176,6 +176,14 @@ window.EVENT = {
      Every field is optional except year and title.
      recording: full lecture video link · booklet: { pdf, cover } · clips: short videos (vertical is fine)
      photos: gallery (each src needs name.jpg and name-sm.jpg) · albumUrl: full photo album link */
+  // Press coverage. Newest first; year links each story to its Throwbacks tab.
+  press: [
+    { year: "2026", outlet: "Salient Times", title: "McPherson University Advocates AI-Driven Administration, Stresses Human Responsibility at Second Registry Lecture", url: "https://salienttimes.com/2026/11/24/%f0%9d%97%a0%f0%9d%97%b0%f0%9d%97%a3%f0%9d%97%b5%f0%9d%97%b2%f0%9d%97%bf%f0%9d%98%80%f0%9d%97%bc%f0%9d%97%bb-%f0%9d%97%a8%f0%9d%97%bb%f0%9d%97%b6%f0%9d%98%83%f0%9d%97%b2%f0%9d%97%bf%f0%9d%98%80/" },
+    { year: "2026", outlet: "Western Post", title: "McPherson University Advocates AI-Driven Administration, Stresses Human Accountability", url: "https://www.westernpost.ng/mcpherson-university-advocates-ai-driven-administration-stresses-human-accountability/" },
+    { year: "2026", outlet: "FTN Edu", title: "McPherson Registrar Alawode Highlights Reforms, Staff Development at Annual Lecture", url: "https://ftnedu.ng/2026/11/24/mcpherson-registrar-alawode-highlights-reforms-staff-development-at-annual-lecture/" },
+    { year: "2026", outlet: "MySchoolNews", title: "McU Honours Pioneer Registrar with Meritorious Service Award", url: "https://myschoolnews.ng/mcu-honours-pioneer-registrar-with-meritorious-service-award" }
+  ],
+
   throwbacks: [
     {
       year: "2026",
@@ -186,6 +194,26 @@ window.EVENT = {
       venue: "500-Seater Ultra-modern Lecture Theatre, McPherson University",
       recording: "https://www.youtube.com/live/cHwB9fzzJnY",
       booklet: { pdf: "assets/docs/registry-lecture-2026-e-booklet.pdf", cover: "assets/docs/registry-lecture-2026-e-booklet-cover.jpg", label: "Programme e-booklet" },
+      photos: [
+        { src: "assets/img/2026/award-obajobi", caption: "Presentation of the Social Impact Award to Julius Adebowale Obajobi" },
+        { src: "assets/img/2026/awardee-afolabi", caption: "Social Impact Awardee Fathia Olatoun Afolabi" },
+        { src: "assets/img/2026/podium-registrar", caption: "Remarks at the podium" },
+        { src: "assets/img/2026/group-stage", caption: "Guests and students on stage at the lecture" },
+        { src: "assets/img/2026/awardee-obajobi", caption: "Social Impact Awardee Julius Adebowale Obajobi with his award" },
+        { src: "assets/img/2026/podium-remarks", caption: "Address at the lecture" },
+        { src: "assets/img/2026/guests-seated", caption: "Guests at the high table" },
+        { src: "assets/img/2026/arrival", caption: "Arriving at the lecture" },
+        { src: "assets/img/2026/afolabi-seated", caption: "In the 500-Seater Lecture Theatre" },
+        { src: "assets/img/2026/registration-desk", caption: "The registration desk" },
+        { src: "assets/img/2026/banner-portrait", caption: "In front of the Registry Week banner" },
+        { src: "assets/img/2026/meeting", caption: "Courtesy meeting with guests" },
+        { src: "assets/img/2026/guest-outside", caption: "Outside the venue" }
+      ],
+      albums: [
+        { label: "Photo gallery", sub: "Woleshotit Media", url: "https://woleshotitmedia.ourpixo.com/1GQS" },
+        { label: "Photo album", sub: "Google Photos", url: "https://photos.app.goo.gl/fcZWq5AeveEEyFxJ8" }
+      ],
+      photoCredit: "Photos: Woleshotit Media",
       clips: [
         { label: "Day 1", sub: "Monday 16 November", mp4: "assets/video/2026/registry-week-day1.mp4", poster: "assets/video/2026/registry-week-day1.jpg" },
         { label: "Day 2", sub: "Tuesday 17 November", mp4: "assets/video/2026/registry-week-day2.mp4", poster: "assets/video/2026/registry-week-day2.jpg" }

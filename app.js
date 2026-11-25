@@ -364,7 +364,17 @@
             '<img src="' + esc(ph.src) + '-sm.jpg" alt="' + esc(ph.caption) + '" loading="lazy" width="900" height="600"></button>';
         }).join("") + "</div>";
       }
-      if (t.albumUrl) media += '<p class="album-row"><a class="album-link" href="' + esc(t.albumUrl) + '" target="_blank" rel="noopener"><span class="al-title">View the full photo album</span><span class="al-sub">Google Photos</span></a></p>';
+      var albums = t.albums || (t.albumUrl ? [{ label: "View the full photo album", sub: "Google Photos", url: t.albumUrl }] : []);
+      var pressCount = (E.press || []).filter(function (p) { return p.year === t.year; }).length;
+      if (albums.length || t.photoCredit || pressCount) {
+        media += '<div class="album-row">' +
+          (t.photoCredit ? '<p class="photo-credit">' + esc(t.photoCredit) + "</p>" : "") +
+          albums.map(function (al) {
+            return '<a class="album-link" href="' + esc(al.url) + '" target="_blank" rel="noopener"><span class="al-title">' + esc(al.label) + '</span><span class="al-sub">' + esc(al.sub || "") + "</span></a>";
+          }).join("") +
+          (pressCount ? '<a class="album-link" href="#press"><span class="al-title">In the press</span><span class="al-sub">' + pressCount + (pressCount === 1 ? " story" : " stories") + "</span></a>" : "") +
+          "</div>";
+      }
       return '<div class="tb-panel" role="' + (TB.length > 1 ? "tabpanel" : "region") + '" id="tbp-' + esc(t.year) + '"' + (TB.length > 1 ? ' aria-labelledby="tbt-' + esc(t.year) + '"' : "") + (i ? " hidden" : "") + ">" +
         '<div class="maiden-head"><div class="maiden-copy">' +
           '<p class="maiden-kicker">' + esc(t.edition) + ", " + esc(t.year) + "</p>" +
@@ -431,6 +441,19 @@
       if (Math.abs(dx) > 50) showPhoto(cur + (dx < 0 ? 1 : -1));
     });
   }
+
+  /* ---------- press coverage ---------- */
+  var pl = $("#press-list");
+  if (pl && E.press && E.press.length) {
+    pl.innerHTML = E.press.map(function (p) {
+      var host = "";
+      try { host = new URL(p.url).hostname.replace(/^www\./, ""); } catch (e) {}
+      return '<li><a class="press-card" href="' + esc(p.url) + '" target="_blank" rel="noopener">' +
+        '<span class="press-meta"><span class="press-outlet">' + esc(p.outlet) + '</span><span class="press-year">' + esc(p.year) + "</span></span>" +
+        '<span class="press-title">' + esc(p.title) + "</span>" +
+        '<span class="press-read">Read on ' + esc(host || p.outlet) + EXT + "</span></a></li>";
+    }).join("");
+  } else if (pl) { $("#press").hidden = true; }
 
   /* ---------- registry dropdown ---------- */
   var dd = $("#registry-dd");
