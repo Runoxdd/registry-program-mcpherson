@@ -774,3 +774,5 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .press-card:hover .press-read { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 760px) { .press-list { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .press-card { transition: none; } .press-card:hover { transform: none; } }
+.tb-clips { grid-template-columns: repeat(4, minmax(0, 15rem)); }
+.tb-pdf-size { display: block; margin-top: .125rem; font-size: .8125rem; color: var(--sky); }

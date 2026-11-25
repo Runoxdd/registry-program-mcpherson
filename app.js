@@ -352,11 +352,12 @@
           '<source src="' + esc(c.mp4) + '" type="video/mp4"></video></div>' +
           '<figcaption><span class="tb-clip-label">' + esc(c.label) + '</span><span class="tb-clip-sub">' + esc(c.sub || "") + "</span></figcaption></figure>";
       }).join("");
-      if (t.booklet) {
-        cards += '<figure class="tb-clip tb-booklet"><a class="tb-clip-frame" href="' + esc(t.booklet.pdf) + '" target="_blank" rel="noopener" aria-label="Open the ' + esc(t.year) + ' programme e-booklet (PDF)">' +
-          '<img src="' + esc(t.booklet.cover) + '" alt="" loading="lazy" width="910" height="1287"><span class="tb-booklet-badge">PDF</span></a>' +
-          '<figcaption><span class="tb-clip-label">' + esc(t.booklet.label || "E-booklet") + '</span><span class="tb-clip-sub"><a class="text-link" href="' + esc(t.booklet.pdf) + '" target="_blank" rel="noopener">Open the PDF</a></span></figcaption></figure>';
-      }
+      (t.booklets || (t.booklet ? [t.booklet] : [])).forEach(function (bk) {
+        cards += '<figure class="tb-clip tb-booklet"><a class="tb-clip-frame" href="' + esc(bk.pdf) + '" target="_blank" rel="noopener" aria-label="Open the ' + esc(t.year + " " + (bk.label || "booklet")) + ' (PDF)">' +
+          '<img src="' + esc(bk.cover) + '" alt="" loading="lazy" width="910" height="1287"><span class="tb-booklet-badge">PDF</span></a>' +
+          '<figcaption><span class="tb-clip-label">' + esc(bk.label || "Booklet") + '</span><span class="tb-clip-sub"><a class="text-link" href="' + esc(bk.pdf) + '" target="_blank" rel="noopener">Open the PDF</a>' +
+          (bk.sub ? ' <span class="tb-pdf-size">' + esc(bk.sub) + "</span>" : "") + "</span></figcaption></figure>";
+      });
       if (cards) media += '<div class="tb-clips">' + cards + "</div>";
       if (t.photos && t.photos.length) {
         media += '<div class="gallery">' + t.photos.map(function (ph, k) {

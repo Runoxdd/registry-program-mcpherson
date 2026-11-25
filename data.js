@@ -193,7 +193,10 @@ window.EVENT = {
       date: "16 to 20 November 2026 · Lecture on Thursday 19 November",
       venue: "500-Seater Ultra-modern Lecture Theatre, McPherson University",
       recording: "https://www.youtube.com/live/cHwB9fzzJnY",
-      booklet: { pdf: "assets/docs/registry-lecture-2026-e-booklet.pdf", cover: "assets/docs/registry-lecture-2026-e-booklet-cover.jpg", label: "Programme e-booklet" },
+      booklets: [
+        { pdf: "assets/docs/registry-lecture-2026-lecture-booklet.pdf", cover: "assets/docs/registry-lecture-2026-lecture-booklet-cover.jpg", label: "Lecture Booklet", sub: "33 pages · 8 MB" },
+        { pdf: "assets/docs/registry-lecture-2026-e-booklet.pdf", cover: "assets/docs/registry-lecture-2026-e-booklet-cover.jpg", label: "Programme e-booklet", sub: "4 pages · 4 MB" }
+      ],
       photos: [
         { src: "assets/img/2026/award-obajobi", caption: "Presentation of the Social Impact Award to Julius Adebowale Obajobi" },
         { src: "assets/img/2026/awardee-afolabi", caption: "Social Impact Awardee Fathia Olatoun Afolabi" },
