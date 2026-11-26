@@ -755,7 +755,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* ---------- throwback album row ---------- */
 .album-row { flex-wrap: wrap; align-items: baseline; gap: .75rem 1.75rem; }
-.photo-credit { margin-right: auto; font-family: var(--f-display); font-size: .8125rem; color: var(--sky); }
+.photo-credit { flex-basis: 100%; margin: 0; font-family: var(--f-display); font-size: .8125rem; color: var(--sky); }
 
 /* ---------- in the press ---------- */
 .press { background: var(--paper); }

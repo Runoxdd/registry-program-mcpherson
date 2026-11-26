@@ -214,7 +214,8 @@ window.EVENT = {
       ],
       albums: [
         { label: "Photo gallery", sub: "Woleshotit Media", url: "https://woleshotitmedia.ourpixo.com/1GQS" },
-        { label: "Photo album", sub: "Google Photos", url: "https://photos.app.goo.gl/fcZWq5AeveEEyFxJ8" }
+        { label: "Photo album", sub: "Google Photos", url: "https://photos.app.goo.gl/fcZWq5AeveEEyFxJ8" },
+        { label: "Awards gallery", sub: "Stephen Creative Hub", url: "https://stephencreativehub61.pixieset.com/registryaward/" }
       ],
       photoCredit: "Photos: Woleshotit Media",
       clips: [
